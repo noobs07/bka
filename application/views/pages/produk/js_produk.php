@@ -109,15 +109,12 @@
 					</span>
 				</button>
 			</div>
-			<form id="delete_form">
-				<input type="hidden" name="id" id="delete_id" />
-				<div class="modal-body" id="photos-div"></div>
-				<div class="modal-footer">
-					<button class="btn" data-dismiss="modal">
-						Tutup
-					</button>
-				</div>
-			</form>
+			<div class="modal-body" id="photos-div"></div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal">
+					Tutup
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -168,6 +165,8 @@
 					const img = document.createElement('img');
 					img.src = photo['file'].replace(' ', '_').replace('%20', '_')
 					img.style.width = '100px'
+					// img.onerror = imgError(img)
+					img.alt = photo['file'].replace(' ', '_').replace('%20', '_')
 					photos_div.append(img)
 				})
 			},

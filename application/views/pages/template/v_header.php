@@ -69,7 +69,7 @@
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
-				<img src="<?= base_url('assets/logo.png') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+				<img src="<?= base_url('assets/logo.jpeg') ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 				<span class="brand-text font-weight-light">BKA</span>
 			</a>
 
@@ -96,6 +96,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a href="<?= base_url('banner') ?>" class="nav-link <?= ($module=='banner') ? 'active' : '' ?>">
+								<i class="fas fa-image nav-icon"></i>
+								<p>Banner</p>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a href="<?= base_url('berita') ?>" class="nav-link <?= ($module=='berita') ? 'active' : '' ?>">
 								<i class="fas fa-newspaper nav-icon"></i>
 								<p>Berita</p>
@@ -111,6 +117,12 @@
 							<a href="<?= base_url('produk') ?>" class="nav-link <?= ($module=='produk') ? 'active' : '' ?>">
 								<i class="fas fa-shopping-bag nav-icon"></i>
 								<p>Produk</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('reseller') ?>" class="nav-link <?= ($module=='reseller') ? 'active' : '' ?>">
+								<i class="fas fa-address-card nav-icon"></i>
+								<p>Reseller</p>
 							</a>
 						</li>
 						<li class="nav-item">

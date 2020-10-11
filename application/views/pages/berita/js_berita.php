@@ -203,7 +203,7 @@
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
-					return `<img src='${row.cover}' style='width:100px' />`;
+					return `<img onerror="imgError(this)" src='${row.cover}' style='width:100px' />`;
 				},
 				'targets': 3
 			},
