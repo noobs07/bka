@@ -19,43 +19,43 @@
 </div>
 
 <!-- jQuery -->
-<script src="<?= base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/jquery/jquery.min.js') ?>"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="<?= base_url('assets/plugins/jquery-ui/jquery-ui.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/jquery-ui/jquery-ui.min.js') ?>"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
 	$.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
-<script src="<?= base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 <!-- ChartJS -->
-<script src="<?= base_url('assets/plugins/chart.js/Chart.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/chart.js/Chart.min.js') ?>"></script>
 <!-- Sparkline -->
-<script src="<?= base_url('assets/plugins/sparklines/sparkline.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/sparklines/sparkline.js') ?>"></script>
 <!-- SweetAlert2 -->
-<script src="<?= base_url('assets/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/sweetalert2/sweetalert2.min.js') ?>"></script>
 <!-- Toastr -->
-<script src="<?= base_url('assets/plugins/toastr/toastr.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/toastr/toastr.min.js') ?>"></script>
 <!-- JQVMap -->
-<script src="<?= base_url('assets/plugins/jqvmap/jquery.vmap.min.js') ?>"></script>
-<script src="<?= base_url('assets/plugins/jqvmap/maps/jquery.vmap.usa.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/jqvmap/jquery.vmap.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/jqvmap/maps/jquery.vmap.usa.js') ?>"></script>
 <!-- jQuery Knob Chart -->
-<script src="<?= base_url('assets/plugins/jquery-knob/jquery.knob.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/jquery-knob/jquery.knob.min.js') ?>"></script>
 <!-- daterangepicker -->
-<script src="<?= base_url('assets/plugins/moment/moment.min.js') ?>"></script>
-<script src="<?= base_url('assets/plugins/daterangepicker/daterangepicker.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/moment/moment.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/daterangepicker/daterangepicker.js') ?>"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= base_url('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') ?>"></script>
 <!-- Summernote -->
-<script src="<?= base_url('assets/plugins/summernote/summernote-bs4.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/summernote/summernote-bs4.min.js') ?>"></script>
 <!-- overlayScrollbars -->
-<script src="<?= base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
+<script src="<?= base_url('assets/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
 <!-- Dropzone -->
-<script src='<?= base_url('assets/plugins/dropzone/dist/dropzone.js'); ?>' type='text/javascript'></script>
+<script src='<?= base_url('assets/admin/plugins/dropzone/dist/dropzone.js'); ?>' type='text/javascript'></script>
 <!-- DataTables -->
-<script src='<?= base_url('assets/plugins/datatables/datatables.min.js'); ?>' type='text/javascript'></script>
+<script src='<?= base_url('assets/admin/plugins/datatables/datatables.min.js'); ?>' type='text/javascript'></script>
 <!-- AdminLTE App -->
-<script src="<?= base_url('assets/dist/js/adminlte.js') ?>"></script>
+<script src="<?= base_url('assets/admin/dist/js/adminlte.js') ?>"></script>
 
 <script type="text/javascript">
 

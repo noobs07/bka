@@ -10,7 +10,7 @@ class Home extends CI_Controller {
 
 	function index()
 	{
-		print_r('home');
+		$this->load->view('front/home');
 	}
 }
 ?>
