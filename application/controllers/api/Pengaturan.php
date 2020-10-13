@@ -16,7 +16,11 @@ class Pengaturan extends REST_Controller {
 
 	function index_get() {
 		$data = $this->db->order_by('id desc')->limit(1)->get($this->table)->row();
-		$this->response($data, 200);
+		if ($data) {
+			$this->response($data, 200);
+		} else {
+			$this->response(false, 203);
+		}
 	}
 
 	function index_post() {

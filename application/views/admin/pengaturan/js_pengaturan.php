@@ -241,13 +241,13 @@
 					instagram_text.html(response['instagram'])
 					reseller_rule_text.html(response['reseller_rule'])
 				} else {
-					profil_text.val('Kosong')
-					promo_text.val('Kosong')
-					alamat_text.val('Kosong')
-					twitter_text.val('Kosong')
-					facebook_text.val('Kosong')
-					instagram_text.val('Kosong')
-					reseller_rule_text.val('Kosong')
+					profil_text.text('Kosong')
+					promo_text.text('Kosong')
+					alamat_text.text('Kosong')
+					twitter_text.text('Kosong')
+					facebook_text.text('Kosong')
+					instagram_text.text('Kosong')
+					reseller_rule_text.text('Kosong')
 				}
 			},
 			error: function(error){
