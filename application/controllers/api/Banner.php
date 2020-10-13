@@ -32,7 +32,7 @@ class Banner extends REST_Controller {
 		}
 
 		$columns = array('id_banner','judul','deskripsi','cover','is_shown');
-		$this->db->select('id_banner,judul,deskripsi,concat("'.base_url('assets/uploads/banner/').'",cover) as cover,is_shown');
+		$this->db->select('id_banner,judul,deskripsi,concat("'.base_url('assets/admin/uploads/banner/').'",cover) as cover,is_shown');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('judul', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
@@ -69,14 +69,14 @@ class Banner extends REST_Controller {
 		
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
-		$this->upload_file_config('./assets/uploads/banner/', $new_name);
+		$this->upload_file_config('./assets/admin/uploads/banner/', $new_name);
 
 		if ($this->upload->do_upload('file')) {
 			$uploaded = $this->upload->data();
 			$data['cover'] = $uploaded['file_name'];
 			$old = $this->get_one($id);
 			if ($old) {
-				unlink('./assets/uploads/banner/'.$old->foto);
+				unlink('./assets/admin/uploads/banner/'.$old->foto);
 			}
 		}
 

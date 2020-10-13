@@ -109,7 +109,7 @@
 			dialogsInBody: true,
 			callbacks: {
 				onImageUpload: function(files) {
-					uploadSummernote(id, files[0], '')
+					uploadSummernote('#profil_input', files[0], 'pengaturan')
 				},
 			}
 		})
@@ -120,7 +120,7 @@
 			dialogsInBody: true,
 			callbacks: {
 				onImageUpload: function(files) {
-					uploadSummernote(id, files[0], '')
+					uploadSummernote('#promo_input', files[0], 'pengaturan')
 				},
 			}
 		})
@@ -131,7 +131,7 @@
 			dialogsInBody: true,
 			callbacks: {
 				onImageUpload: function(files) {
-					uploadSummernote(id, files[0], '')
+					uploadSummernote('#alamat_input', files[0], 'pengaturan')
 				},
 			}
 		})
@@ -149,7 +149,7 @@
 			dialogsInBody: true,
 			callbacks: {
 				onImageUpload: function(files) {
-					uploadSummernote(id, files[0], '')
+					uploadSummernote('#reseller_rule_input', files[0], 'pengaturan')
 				},
 			}
 		})

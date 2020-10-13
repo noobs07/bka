@@ -60,7 +60,7 @@ class Produk extends REST_Controller {
 
 	function photos_get(){
 		$id = $this->get('id');
-		$this->db->select('concat("'.base_url('assets/uploads/produk/').'",file) as file');
+		$this->db->select('concat("'.base_url('assets/admin/uploads/produk/').'",file) as file');
 		$data = $this->db->where($this->id_column,$id)->get('produk_foto')->result();
 		$this->response($data, 200);
 	}
@@ -72,7 +72,7 @@ class Produk extends REST_Controller {
 
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
-		$this->upload_file_config('./assets/uploads/produk/');
+		$this->upload_file_config('./assets/admin/uploads/produk/');
 
 		$files = array();
 		foreach ($_FILES['file']['name'] as $key => $filename) {

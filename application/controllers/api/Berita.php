@@ -32,7 +32,7 @@ class Berita extends REST_Controller {
 		}
 
 		$columns = array('id_berita','judul','konten','cover','posted_date');
-		$this->db->select('id_berita,judul,konten,concat("'.base_url('assets/uploads/berita/').'",cover) as cover,posted_date');
+		$this->db->select('id_berita,judul,konten,concat("'.base_url('assets/admin/uploads/berita/').'",cover) as cover,posted_date');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('judul', $keyword['value']);
 			$this->db->or_like('konten', $keyword['value']);
@@ -69,14 +69,14 @@ class Berita extends REST_Controller {
 
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
-		$this->upload_file_config('./assets/uploads/berita/', $new_name);
+		$this->upload_file_config('./assets/admin/uploads/berita/', $new_name);
 
 		if ($this->upload->do_upload('file')) {
 			$uploaded = $this->upload->data();
 			$data['cover'] = $uploaded['file_name'];
 			$old = $this->get_one($id);
 			if ($old) {
-				unlink('./assets/uploads/berita/'.$old->foto);
+				unlink('./assets/admin/uploads/berita/'.$old->foto);
 			}
 		}
 
