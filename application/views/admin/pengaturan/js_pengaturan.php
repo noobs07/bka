@@ -240,6 +240,14 @@
 					facebook_text.html(response['facebook'])
 					instagram_text.html(response['instagram'])
 					reseller_rule_text.html(response['reseller_rule'])
+				} else {
+					profil_text.val('Kosong')
+					promo_text.val('Kosong')
+					alamat_text.val('Kosong')
+					twitter_text.val('Kosong')
+					facebook_text.val('Kosong')
+					instagram_text.val('Kosong')
+					reseller_rule_text.val('Kosong')
 				}
 			},
 			error: function(error){
