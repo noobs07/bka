@@ -3,6 +3,7 @@
 	const edit_btn = $('#edit_btn')
 	const simpan_btn = $('#simpan_btn')
 
+	const input_id = $('#id')
 	const gambar = $('#gambar_profil')
 	let profil = $('#profil_input')
 	let profil_text = $('#profil_text')
@@ -25,8 +26,76 @@
 	let reseller_rule = $('#reseller_rule_input')
 	let reseller_rule_text = $('#reseller_rule_text')
 
-	function refreshPengaturan() {
+	simpan_btn.click((e)=>{
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			data:{
+				id:input_id.val(),
+				profil:profil.val(),
+				promo:promo.val(),
+				alamat:alamat.val(),
+				twitter:twitter.val(),
+				facebook:facebook.val(),
+				instagram:instagram.val(),
+				reseller_rule:reseller_rule.val(),
+			},
+			type: 'POST',
+			beforeSend: function (xhr, settings){
+				simpan_btn.text('Loading ...')
+			},
+			success: function(response){ 
+				simpan_btn.text('Simpan')
+				if (response){
+					profil_text.html(response['profil'])
+					promo_text.html(response['promo'])
+					alamat_text.html(response['alamat'])
+					twitter_text.html(response['twitter'])
+					facebook_text.html(response['facebook'])
+					instagram_text.html(response['instagram'])
+					reseller_rule_text.html(response['reseller_rule'])
+				}
+			},
+			error: function(error){
+				simpan_btn.text('Refresh Halaman')
+			}
+		})
+	})
 
+	function refreshPengaturan() {
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+				profil_text.html('Loading ...')
+				promo_text.html('Loading ...')
+				alamat_text.html('Loading ...')
+				twitter_text.html('Loading ...')
+				facebook_text.html('Loading ...')
+				instagram_text.html('Loading ...')
+				reseller_rule_text.html('Loading ...')
+			},
+			success: function(response){ 
+				if (response){
+					input_id.val(response['id'])
+					profil_text.html(response['profil'])
+					promo_text.html(response['promo'])
+					alamat_text.html(response['alamat'])
+					twitter_text.html(response['twitter'])
+					facebook_text.html(response['facebook'])
+					instagram_text.html(response['instagram'])
+					reseller_rule_text.html(response['reseller_rule'])
+				}
+			},
+			error: function(error){
+				profil_text.html('Coba lagi')
+				promo_text.html('Coba lagi')
+				alamat_text.html('Coba lagi')
+				twitter_text.html('Coba lagi')
+				facebook_text.html('Coba lagi')
+				instagram_text.html('Coba lagi')
+				reseller_rule_text.html('Coba lagi')
+			}
+		})
 	}
 
 	function editPengaturan() {
@@ -85,6 +154,42 @@
 			}
 		})
 		reseller_rule_text.hide()
+
+
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+				profil_text.html('Loading ...')
+				promo_text.html('Loading ...')
+				alamat_text.html('Loading ...')
+				twitter_text.html('Loading ...')
+				facebook_text.html('Loading ...')
+				instagram_text.html('Loading ...')
+				reseller_rule_text.html('Loading ...')
+			},
+			success: function(response){
+				if (response) {
+					input_id.val(response['id'])
+					profil.summernote('code',response['profil'])
+					promo.summernote('code',response['promo'])
+					alamat.summernote('code',response['alamat'])
+					twitter.val(response['twitter'])
+					facebook.val(response['facebook'])
+					instagram.val(response['instagram'])
+					reseller_rule.summernote('code',response['reseller_rule'])
+				}
+			},
+			error: function(error){
+				profil_text.html('Coba lagi')
+				promo_text.html('Coba lagi')
+				alamat_text.html('Coba lagi')
+				twitter_text.html('Coba lagi')
+				facebook_text.html('Coba lagi')
+				instagram_text.html('Coba lagi')
+				reseller_rule_text.html('Coba lagi')
+			}
+		})
 	}
 
 	function simpanPengaturan() {
@@ -120,7 +225,26 @@
 
 	$(document).ready( function () {
 
-
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+			},
+			success: function(response){ 
+				if (response){
+					input_id.val(response['id'])
+					profil_text.html(response['profil'])
+					promo_text.html(response['promo'])
+					alamat_text.html(response['alamat'])
+					twitter_text.html(response['twitter'])
+					facebook_text.html(response['facebook'])
+					instagram_text.html(response['instagram'])
+					reseller_rule_text.html(response['reseller_rule'])
+				}
+			},
+			error: function(error){
+			}
+		})
 
 	});
 </script>

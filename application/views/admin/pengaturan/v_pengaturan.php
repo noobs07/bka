@@ -34,7 +34,7 @@
 							<div class="tab-content" id="custom-content-below-tabContent">
 								<div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="profil-tab">
 									<div class="row">
-										<div class="col-12">
+										<div class="col-12" style="display: none;">
 											<div class="form-group">
 												<label for="gambar_profil">
 													Gambar
@@ -48,8 +48,9 @@
 												<label for="profil_input">
 													Profil
 												</label>
+												<input type="hidden" name="id" id="id" value="" />
 												<textarea class="form-control" id="profil_input" name="profil_input" style="display: none;"></textarea>
-												<p id="profil_text">a</p>
+												<p id="profil_text">Loading ...</p>
 											</div>
 										</div>
 									</div>
@@ -61,7 +62,7 @@
 												Promo
 											</label>
 											<textarea class="form-control" id="promo_input" name="promo_input" style="display: none;"></textarea>
-											<p id="promo_text">a</p>
+											<p id="promo_text">Loading ...</p>
 										</div>
 									</div>
 								</div>
@@ -72,7 +73,7 @@
 												Alamat
 											</label>
 											<textarea class="form-control" id="alamat_input" name="alamat_input" style="display: none;"></textarea>
-											<p id="alamat_text">a</p>
+											<p id="alamat_text">Loading ...</p>
 										</div>
 									</div>
 									<div class="col-6">
@@ -81,21 +82,21 @@
 												Twitter
 											</label>
 											<textarea class="form-control" id="twitter_input" name="twitter_input" style="display: none;"></textarea>
-											<p id="twitter_text">a</p>
+											<p id="twitter_text">Loading ...</p>
 										</div>
 										<div class="form-group">
 											<label for="facebook_input">
 												Facebook
 											</label>
 											<textarea class="form-control" id="facebook_input" name="facebook_input" style="display: none;"></textarea>
-											<p id="facebook_text">a</p>
+											<p id="facebook_text">Loading ...</p>
 										</div>
 										<div class="form-group">
 											<label for="instagram_input">
 												Instagram
 											</label>
 											<textarea class="form-control" id="instagram_input" name="instagram_input" style="display: none;"></textarea>
-											<p id="instagram_text">a</p>
+											<p id="instagram_text">Loading ...</p>
 										</div>
 									</div>
 								</div>
@@ -106,7 +107,7 @@
 												Reseller Rule
 											</label>
 											<textarea class="form-control" id="reseller_rule_input" name="reseller_rule_input" style="display: none;"></textarea>
-											<p id="reseller_rule_text">a</p>
+											<p id="reseller_rule_text">Loading ...</p>
 										</div>
 									</div>
 								</div>
