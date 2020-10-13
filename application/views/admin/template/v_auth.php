@@ -28,7 +28,7 @@
 			<div class="card-body login-card-body">
 				<p class="login-box-msg">Sign in to start your session</p>
 
-				<form action="<?= base_url('auth/login') ?>" method="post">
+				<form action="<?= base_url('admin/auth/login') ?>" method="post">
 					<div class="input-group mb-3">
 						<input type="text" class="form-control" placeholder="Username" name="username">
 						<div class="input-group-append">

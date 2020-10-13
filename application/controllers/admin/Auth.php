@@ -12,9 +12,9 @@ class Auth extends CI_Controller {
 	function index()
 	{
 		if ($this->session->userdata('bka_user')) {
-			redirect(base_url());
+			redirect(base_url('admin/dashboard'));
 		}
-		$page = 'pages/template/v_auth';
+		$page = 'admin/template/v_auth';
 		$this->load->view($page);
 	}
 
@@ -23,16 +23,16 @@ class Auth extends CI_Controller {
 		$username = htmlspecialchars($this->input->post('username',TRUE),ENT_QUOTES);
 		$password = htmlspecialchars($this->input->post('password',TRUE),ENT_QUOTES);
 
-		$auth=$this->m_auth->auth($username,$password);
+		$auth = $this->m_auth->auth($username,$password);
 
 		if($auth->num_rows() > 0){
 			$data=$auth->row_array();
 			$this->session->set_userdata('bka_logged_in',TRUE);
 			$this->session->set_userdata('bka_user',$data);
-			redirect(base_url());
+			redirect(base_url('admin/dashboard'));
 		} else {
 			$this->session->set_flashdata('error_msg', 'username atau password salah');
-			redirect(base_url('auth'));
+			redirect(base_url('admin/auth'));
 		}
 
 	}
@@ -42,7 +42,7 @@ class Auth extends CI_Controller {
 		$this->session->unset_userdata('bka_logged_in');
 		$this->session->unset_userdata('bka_user');
 		session_destroy();
-		redirect(base_url('auth'));
+		redirect(base_url('admin/auth'));
 	}
 }
 ?>

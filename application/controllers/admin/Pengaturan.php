@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends MY_Controller {
+class Pengaturan extends MY_Controller {
 
-	public $module = 'dashboard';
+	public $module = 'pengaturan';
 
 	public function index()
 	{
 		$module = $this->module;
 
 		$data['module'] = $module;
-		$data['title'] = 'Dashboard';
-		$page = 'pages/'.$module.'/v_'.$module;
-		$js = 'pages/'.$module.'/js_'.$module;
+		$data['title'] = 'Pengaturan';
+		$page = 'admin/'.$module.'/v_'.$module;
+		$js = 'admin/'.$module.'/js_'.$module;
 
 		$this->loadview($data, $page, $js);
 	}

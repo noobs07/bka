@@ -57,7 +57,7 @@
 			<!-- Right navbar links -->
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class="btn btn-sm btn-danger" href="<?= base_url('auth/logout') ?>" role="button" >
+					<a class="btn btn-sm btn-danger" href="<?= base_url('admin/auth/logout') ?>" role="button" >
 						LOGOUT
 					</a>
 				</li>
@@ -90,49 +90,49 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 						<li class="nav-header">Master Data</li>
 						<li class="nav-item">
-							<a href="<?= base_url('dashboard') ?>" class="nav-link <?= ($module=='dashboard') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/dashboard') ?>" class="nav-link <?= ($module=='dashboard') ? 'active' : '' ?>">
 								<i class="fas fa-home nav-icon"></i>
 								<p>Dashboard</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('banner') ?>" class="nav-link <?= ($module=='banner') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/banner') ?>" class="nav-link <?= ($module=='banner') ? 'active' : '' ?>">
 								<i class="fas fa-image nav-icon"></i>
 								<p>Banner</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('berita') ?>" class="nav-link <?= ($module=='berita') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/berita') ?>" class="nav-link <?= ($module=='berita') ? 'active' : '' ?>">
 								<i class="fas fa-newspaper nav-icon"></i>
 								<p>Berita</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('ecommerce') ?>" class="nav-link <?= ($module=='ecommerce') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/ecommerce') ?>" class="nav-link <?= ($module=='ecommerce') ? 'active' : '' ?>">
 								<i class="fas fa-store nav-icon"></i>
 								<p>Official Store</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('produk') ?>" class="nav-link <?= ($module=='produk') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/produk') ?>" class="nav-link <?= ($module=='produk') ? 'active' : '' ?>">
 								<i class="fas fa-shopping-bag nav-icon"></i>
 								<p>Produk</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('reseller') ?>" class="nav-link <?= ($module=='reseller') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/reseller') ?>" class="nav-link <?= ($module=='reseller') ? 'active' : '' ?>">
 								<i class="fas fa-address-card nav-icon"></i>
 								<p>Reseller</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('kontak') ?>" class="nav-link <?= ($module=='kontak') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/kontak') ?>" class="nav-link <?= ($module=='kontak') ? 'active' : '' ?>">
 								<i class="fas fa-envelope nav-icon"></i>
 								<p>Kontak</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('pengaturan') ?>" class="nav-link <?= ($module=='pengaturan') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/pengaturan') ?>" class="nav-link <?= ($module=='pengaturan') ? 'active' : '' ?>">
 								<i class="fas fa-cogs nav-icon"></i>
 								<p>Pengaturan</p>
 							</a>

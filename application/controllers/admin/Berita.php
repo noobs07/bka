@@ -11,8 +11,8 @@ class Berita extends MY_Controller {
 
 		$data['module'] = $module;
 		$data['title'] = 'Berita';
-		$page = 'pages/'.$module.'/v_'.$module;
-		$js = 'pages/'.$module.'/js_'.$module;
+		$page = 'admin/'.$module.'/v_'.$module;
+		$js = 'admin/'.$module.'/js_'.$module;
 
 		$this->loadview($data, $page, $js);
 	}
