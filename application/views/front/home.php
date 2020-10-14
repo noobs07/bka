@@ -1,16 +1,18 @@
 <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/bigroot/bigroot-banner-disinfectan.png') ?>);">
+<?php foreach ($banner as $data){?>
+	  <div class="slider-item" style="background-image:url(<?= base_url("assets/admin/uploads/banner/$data->cover") ?>);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate">
-            <h1 class="mb-4">Disinfectant Spray</h1>
-            <p>Used as liquid spray to kill bacterias (Pseudomonas aeruginosa, Salmonella spp., Escherichia coli) and germs in any surfaces, vehicle, household appliances and also eliminate odors to give freshness..</p>
-            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
+            <h1 class="mb-4"><?=$data->judul?></h1>
+            <p><?=$data->deskripsi?></p>
+            <p><a href="<?=$data->link?>" class="btn btn-primary px-4 py-3 mt-3">visit</a></p>
           </div>
         </div>
         </div>
       </div>
+<?php }?>
 	  
 	  <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/vermont-banner.png')?>);">
       	<div class="overlay"></div>
@@ -51,64 +53,62 @@
         </div>
       </div>
     </section>
-	<section class="ftco-section ftco-no-pt ftc-no-pb">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="col-md-5 order-md-last wrap-about wrap-about d-flex align-items-stretch">
-					<div class="img" style="background-image: url(<?= base_url('assets/front/images/contoh.jpg') ?>); border"></div>
-				</div>
-				<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
-					<h2 class="mb-4">Siapakah Kami ?</h2>
-					<p>Kami menyediakan berbagai jenis Cairan Disinfektan (Disinfectant) untuk area komersil hingga Pabrik. Semua cairan Disinfektan dibuat oleh Klenco Singapore dan sudah dilengkapi dengan SDS (Safety Data Sheet). </br></br>  Cairan Disinfektan adalah cairan khusus yang digunakan untuk membunuh virus dan bakteri penyebab penyakit. Cairan Disinfektan dapat digunakan sebagai proses Sanitasi di semua area seperti area Kantor, Rumah Sakit, Hotel, Restaurant, Rumah, hingga area Pabrik.</p>
-					<div class="row mt-5">
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-security"></span></div>
-								<div class="text pl-3">
-									<h3>Safety First</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-reading"></span></div>
-								<div class="text pl-3">
-									<h3>Regular Classes</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-diploma"></span></div>
-								<div class="text pl-3">
-									<h3>Certified Teachers</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
-								<div class="text pl-3">
-									<h3>Sufficient Classrooms</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+	<section class="ftco-section">
+	<div class="container">
+	<div class="row justify-content-center mb-5 pb-2">
+			<div class="col-md-8 text-center heading-section ftco-animate">
+				<h2 class="mb-4"><span>Our</span> VIdeos</h2>
+				<p >Enjoy Our Videos</p>
 			</div>
 		</div>
+			<div class="row justify-content-center mb-2 pb-2 d-flex">
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-handsanitizer-100.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://www.youtube.com/watch?v=pw7qdpevg8A" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-disinfectan.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-handsanitizer-100.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-disinfectan.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+		</div>
+	</div>
 	</section>
 	
 
 	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);" data-stellar-background-ratio="0.5">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-2 d-flex">
-				<div class="col-md-6 align-items-stretch d-flex">
+				<div class="col-md-3 align-items-stretch d-flex">
 					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);">
 						<div class="video justify-content-center">
 							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
@@ -138,37 +138,15 @@
 			</div>
 		</div>	
 		<div class="row" style="padding-left: 100px; padding-right: 100px;">
+		<?php foreach ($bigroot as $data){?>
 			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
+				<div class="img" style="background-image: url(<?=base_url("assets/admin/uploads/produk/$data->file")?>);"></div>
 				<div class="text pt-4">
 					
-					<p>Montana GLASS Tipe 1</p>
+					<p><a href="<?=base_url("home/produk/?id=$data->id_produk")?>"><?=$data->nama?></a> </p>
 				</div>
 			</div>
-			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
-				<div class="text pt-4">
-					
-					<p>Montana GLASS Tipe 1</p>
-					
-				</div>
-			</div>
-			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
-				<div class="text pt-4">
-					
-					<p> Montana GLASSTipe 1</p>
-					
-				</div>
-			</div>
-			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
-				<div class="text pt-4">
-					
-					<p> Montana GLASS Tipe 1</p>
-					
-				</div>
-			</div>
+		<?php } ?>
 		</div>
 	</div>
 </section>
@@ -177,49 +155,23 @@
 	<div class="container-fluid px-4">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4">Vermon</h2>
+				<h2 class="mb-4">Vermont</h2>
 				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
 			</div>
 		</div>	
 		<div class="row" style="padding-left: 100px; padding-right: 100px;">
+		<?php foreach ($vermont as $data){?>
 			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
+				<div class="img" style="background-image: url(<?=base_url("assets/admin/uploads/produk/$data->file")?>);"></div>
 				<div class="text pt-4">
 					
-					<p>Montana GLASS Tipe 1</p>
+					<p><a href="<?=base_url("home/produk/?id=$data->id_produk")?>"><?=$data->nama?></a> </p>
 				</div>
 			</div>
-			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
-				<div class="text pt-4">
-					
-					<p>Montana GLASS Tipe 1</p>
-					
-				</div>
-			</div>
-			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
-				<div class="text pt-4">
-					
-					<p> Montana GLASSTipe 1</p>
-					
-				</div>
-			</div>
-			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
-				<div class="text pt-4">
-					
-					<p> Montana GLASS Tipe 1</p>
-					
-				</div>
-			</div>
+		<?php } ?>
 		</div>
 	</div>
 </section>
-
-
-
-
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
@@ -229,58 +181,59 @@
 			</div>
 		</div>
 		<div class="row">
+		<?php foreach ($news as $data){
+			$date=date_create($data->posted_date);
+			?>
 			<div class="col-md-6 col-lg-4 ftco-animate">
 				<div class="blog-entry">
-					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url('assets/front/images/enam.jpg') ?>);">
+					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url("assets/admin/uploads/berita/$data->cover") ?>);">
 						<div class="meta-date text-center p-2">
-							<span class="day">26</span>
-							<span class="mos">June</span>
-							<span class="yr">2019</span>
+							<span class="day"><?=date_format($date,"d")?></span>
+							<span class="mos"><?=date_format($date,"F")?></span>
+							<span class="yr"><?=date_format($date,"Y")?></span>
 						</div>
 					</a>
 					<div class="text bg-white p-4">
-						<h3 class="heading"><a href="#">Skills To Develop Your Child Memory</a></h3>
-						<p style="font-size: 14px;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+						<h3 class="heading"><a href="<?=base_url("home/news/?id=$data->id_berita")?>"><?=$data->judul?></a></h3>
+						<p style="font-size: 14px;"><?=substr($data->konten,0, 80).'... '?><a href="<?=base_url("home/news/?id=$data->id_berita")?>">read more</a></p>
 						
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-4 ftco-animate">
-				<div class="blog-entry">
-					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url('assets/front/images/tuju.jpg') ?>);">
-						<div class="meta-date text-center p-2">
-							<span class="day">26</span>
-							<span class="mos">June</span>
-							<span class="yr">2019</span>
-						</div>
-					</a>
-					<div class="text bg-white p-4">
-						<h3 class="heading"><a href="#">Skills To Develop Your Child Memory</a></h3>
-						<p style="font-size: 14px;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<div class="d-flex align-items-center mt-4">
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-4 ftco-animate">
-				<div class="blog-entry">
-					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url('assets/front/images/enam.jpg') ?>);">
-						<div class="meta-date text-center p-2">
-							<span class="day">26</span>
-							<span class="mos">June</span>
-							<span class="yr">2019</span>
-						</div>
-					</a>
-					<div class="text bg-white p-4">
-						<h3 class="heading"><a href="#">Skills To Develop Your Child Memory</a></h3>
-						<p style="font-size: 14px;">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						<div class="d-flex align-items-center mt-4">
-							
-						</div>
-					</div>
-				</div>
-			</div>
+		<?php } ?>
 		</div>
 	</div>
 </section>
+<!--Dimunculkan jika datanya nanti sudah ada -->
+<!--section class="ftco-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-2">
+			<div class="col-md-8 text-center heading-section ftco-animate">
+				<h2 class="mb-4"><span>What's</span> On</h2>
+				<p >Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+			</div>
+		</div>
+		<div class="row">
+		<?php foreach ($news as $data){
+			$date=date_create($data->posted_date);
+			?>
+			<div class="col-md-6 col-lg-4 ftco-animate">
+				<div class="blog-entry">
+					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url("assets/admin/uploads/berita/$data->cover") ?>);">
+						<div class="meta-date text-center p-2">
+							<span class="day"><?=date_format($date,"d")?></span>
+							<span class="mos"><?=date_format($date,"F")?></span>
+							<span class="yr"><?=date_format($date,"Y")?></span>
+						</div>
+					</a>
+					<div class="text bg-white p-4">
+						<h3 class="heading"><a href="<?=base_url("home/news/?id=$data->id_berita")?>"><?=$data->judul?></a></h3>
+						<p style="font-size: 14px;"><?=substr($data->konten,0, 80).'... '?><a href="<?=base_url("home/news/?id=$data->id_berita")?>">read more</a></p>
+						
+					</div>
+				</div>
+			</div>
+		<?php } ?>
+		</div>
+	</div>
+</section-->
