@@ -1,95 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>PT BINTANG ANUGERAH UTAMA</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	
-	<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<section class="home-slider owl-carousel">
+      <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/bigroot/bigroot-banner-disinfectan.png') ?>);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+            <h1 class="mb-4">Disinfectant Spray</h1>
+            <p>Used as liquid spray to kill bacterias (Pseudomonas aeruginosa, Salmonella spp., Escherichia coli) and germs in any surfaces, vehicle, household appliances and also eliminate odors to give freshness..</p>
+            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
+          </div>
+        </div>
+        </div>
+      </div>
+	  
+	  <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/vermont-banner.png')?>);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+            <h1 class="mb-4">Disinfectant Spray</h1>
+            <p>Used as liquid spray to kill bacterias (Pseudomonas aeruginosa, Salmonella spp., Escherichia coli) and germs in any surfaces, vehicle, household appliances and also eliminate odors to give freshness..</p>
+            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
+          </div>
+        </div>
+        </div>
+      </div>
+	  
+	   <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/vermont-banner.png')?>images/produk/bigroot/bigroot-banner-handsanitizer.png);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+            <h1 class="mb-4">Handsanitizer Spray</h1>
+            <p>Used as liquid spray to kill bacterias (Pseudomonas aeruginosa, Salmonella spp., Escherichia coli) and germs in any surfaces, vehicle, household appliances and also eliminate odors to give freshness..</p>
+            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
+          </div>
+        </div>
+        </div>
+      </div>
 
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/open-iconic-bootstrap.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/animate.css') ?>">
-	
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/owl.carousel.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/owl.theme.default.min.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/magnific-popup.css') ?>">
-
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/aos.css') ?>">
-
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/ionicons.min.css') ?>">
-	
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/flaticon.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/icomoon.css') ?>">
-	<link rel="stylesheet" href="<?= base_url('assets/front/css/style.css') ?>">
-</head>
-<body>
-	<nav>
-		<div id="logo"><img src="<?= base_url('assets/front/images/logo2.png') ?>"></div>
-
-		<label for="drop" class="toggle">Menu</label>
-		<input type="checkbox" id="drop" />
-		<ul class="menu">
-			<li><a href="#">Home</a></li>
-			<li><a href="#">Profile</a></li>
-			<li>
-				<!-- First Tier Drop Down -->
-				<label for="drop-1" class="toggle">Produk</label>
-				<a href="#">Produk</a>
-				<input type="checkbox" id="drop-1"/>
-				<ul>
-					<li><a href="#">Big Root</a></li>
-					<li><a href="#">Vermont</a></li>
-				</ul> 
-
-			</li>
-			
-			<li><a href="#">News</a></li>
-			<li>
-				<!-- First Tier Drop Down -->
-				<label for="drop-2" class="toggle">How To</label>
-				<a href="#">How To</a>
-				<input type="checkbox" id="drop-2"/>
-				<ul>
-					<li><a href="#">How to Use</a></li>
-					<li><a href="#">How to be Reseller</a></li>
-				</ul> 
-
-			</li>
-		</ul>
-	</nav>
-	<!-- END nav -->
-	<!-- END nav -->
-	
-	<section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/satu.jpg') ?>);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
-					<div class="col-md-6 ftco-animate">
-						<h1 class="mb-4">Education Needs Complete Solution</h1>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-						<p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/satu.jpg') ?>);">
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
-					<div class="col-md-6 ftco-animate">
-						<h1 class="mb-4">University, College School Education</h1>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-						<p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	
-	
+      <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/vermont-carburator.png')?>);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+            <h1 class="mb-4">CARBURETOR INJECTOR CLEANER</h1>
+            <p>Vermont Carburetor & Injector Cleaner menggunakan teknologi sistem pembersih dengan bahan terkini untuk membersihkan semua bagian karburator.</p>
+            <p><a href="#" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
 	<section class="ftco-section ftco-no-pt ftc-no-pb">
 		<div class="container">
 			<div class="row d-flex">
@@ -323,106 +284,3 @@
 		</div>
 	</div>
 </section>
-
-
-
-
-
-
-<footer class="ftco-footer ftco-bg-dark ftco-section" style="border-top: 1px solid #f1f1f1;">
-	<div class="container">
-		<div class="row mb-5">
-			<div class="col-md-6 col-lg-4">
-				<div class="ftco-footer-widget mb-5">
-					<h2 class="ftco-heading-2"><img style="width:20%;"src="<?= base_url('assets/front/images/logo.jpeg') ?>"></h2>
-					<div class="block-23 mb-3">
-						<ul>
-							<li style="display: list-item;padding:0;float:none"><span class="text">PT BINTANG ANUGERAH UTAMA</span></li>
-							<li style="display: list-item;padding:0;float:none"><span class="text">Established in 2003, ISMAYA GROUP’s vision is to be a leader in building strong and everlasting lifestyle brands globally in the lifestyle & hospitality industry</span></li>
-
-						</ul>
-					</div>
-				</div>
-				
-				<div class="ftco-footer-widget mb-5">
-					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3" style="display:contents;">
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce1.png') ?>"></li>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce2.png') ?>"></li>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce3.png') ?>"></li>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce4.png') ?>"></li>
-					</ul>
-				</div>
-
-			</div>
-			<div class="col-md-6 col-lg-3" >
-				<div class="ftco-footer-widget mb-5 ml-md-4">
-					<h2 class="ftco-heading-2" style="font-size: 14px;">Links Internal</h2>
-					<ul class="list-unstyled">
-						<li style="display: list-item;padding:0;float:none"><a href="#">Home</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">About</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Services</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">Deparments</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Contact</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-3" >
-				<div class="ftco-footer-widget mb-5 ml-md-4">
-					<h2 class="ftco-heading-2" style="font-size: 14px;">Links Internal</h2>
-					<ul class="list-unstyled">
-						<li style="display: list-item;padding:0;float:none"><a href="#">Home</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">About</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Services</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">Deparments</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Contact</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-2">
-				<div class="ftco-footer-widget mb-5" >
-					<h2 class="ftco-heading-2" style="font-size: 14px;">Contact Us!</h2>
-					<form action="#" class="subscribe-form">
-						<div class="form-group">
-							<input type="text" class="form-control mb-2 text-center" placeholder="Enter email address" style="font:000;">
-							<input type="text" class="form-control mb-2 text-center" placeholder="Enter your Message" style="font:000;">
-							<input type="submit" value="Send Message" class="form-control submit px-3">
-						</div>
-					</form>
-				</div>
-				<div class="ftco-footer-widget mb-5">
-					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3" style="display:contents;">
-						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="#"><span class="icon-twitter"></span></a></li>
-						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="#"><span class="icon-facebook"></span></a></li>
-						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="#"><span class="icon-instagram"></span></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-</footer>
-
-
-
-<!-- loader -->
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-<script src="<?= base_url('assets/front/js/jquery.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/jquery-migrate-3.0.1.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/popper.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/bootstrap.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/jquery.easing.1.3.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/jquery.waypoints.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/jquery.stellar.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/owl.carousel.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/jquery.magnific-popup.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/aos.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/jquery.animateNumber.min.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/scrollax.min.js') ?>"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="<?= base_url('assets/front/js/google-map.js') ?>"></script>
-<script src="<?= base_url('assets/front/js/main.js') ?>"></script>
-
-</body>
-</html>
