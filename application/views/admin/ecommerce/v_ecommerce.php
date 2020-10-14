@@ -7,7 +7,7 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h2 class="card-title">Daftar Berita</h2>
+							<h2 class="card-title">Daftar Official Store</h2>
 							<div class="float-right">
 								<button class="btn btn-warning btn-sm" onclick="refreshTable()">Refresh</button>
 								&nbsp;
