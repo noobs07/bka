@@ -36,11 +36,20 @@ class Home extends CI_Controller {
 	}
 	function produk()
 	{
+		$produk = $this->uri->segment(3);
 		$this->load->view('front/header');
 		if($_GET['id']){
-			$this->load->view('front/produkdetil');
+			$id=$_GET['id'];
+			$data['produk']=$this->M_front->get_produk_detail($id);
+			$data['foto']=$this->M_front->get_foto_produk($id);
+			$this->load->view('front/produkdetil', $data);
 		}else{
-			$this->load->view('front/produk');
+			if($produk=='vermont')
+			$data['produk']=$this->M_front->get_produk(2);
+			else
+			$data['produk']=$this->M_front->get_produk(1);
+			$data['nama_produk']=$produk;
+			$this->load->view('front/produk', $data);
 		}
 		$pengaturan=$this->get_pengaturan();
 		$this->load->view('front/footer', $pengaturan);

@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="<?= base_url('assets/front/css/flaticon.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/front/css/icomoon.css') ?>">
 	<link rel="stylesheet" href="<?= base_url('assets/front/css/style.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/front/css/styleproduk.css') ?>">
 </head>
 <body>
 	<nav>
@@ -37,8 +38,8 @@
 				<a href="#">Produk</a>
 				<input type="checkbox" id="drop-1"/>
 				<ul>
-					<li><a href="<?=base_url('home/produk')?>">Bigroot</a></li>
-					<li><a href="<?=base_url('home/produk')?>">Vermont</a></li>
+					<li><a href="<?=base_url('home/produk/bigroot')?>">Bigroot</a></li>
+					<li><a href="<?=base_url('home/produk/vermont')?>">Vermont</a></li>
 				</ul> 
 
 			</li>

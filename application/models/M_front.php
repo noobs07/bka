@@ -21,11 +21,17 @@ class M_front extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function get_detail_produk($id){
+	public function get_produk_detail($id){
 		$this->db->select('*');
-		$this->db->from("banner");
-		$this->db->where("is_shown", 1);
-		$this->db->order_by('id_banner','desc');
+		$this->db->from("produk p");
+		$this->db->where("p.id_produk", $id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function get_foto_produk($id){
+		$this->db->select('*');
+		$this->db->from("produk_foto pf");
+		$this->db->where("pf.id_produk", $id);
 		$query = $this->db->get();
 		return $query->result();
 	}

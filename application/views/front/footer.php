@@ -29,8 +29,8 @@
 					<ul class="list-unstyled">
 						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url()?>">Home</a></li>
 						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile')?>">Profile</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile')?>"></span>Bigroot</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile')?>">Vermont</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile/bigroot')?>"></span>Bigroot</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile/vermont')?>">Vermont</a></li>
 						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/news')?>"></span>News</a></li>
 						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/howtouse')?>"></span>How To Use</a></li>
 					</ul>
