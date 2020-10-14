@@ -7,7 +7,7 @@
 				<div class="col-12">
 					<div class="card">
 						<div class="card-header">
-							<h2 class="card-title">Daftar Banner</h2>
+							<h2 class="card-title">Daftar Event</h2>
 							<div class="float-right">
 								<button class="btn btn-warning btn-sm" onclick="refreshTable()">Refresh</button>
 								&nbsp;
@@ -29,4 +29,4 @@
 		</div>
 		<!-- /.container-fluid -->
 	</section>
-</div>
+</div>a

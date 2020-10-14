@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 
-class Banner extends REST_Controller {
+class Video extends REST_Controller {
 
-	private $table = 'banner';
-	private $id_column = 'id_banner';
+	private $table = 'video';
+	private $id_column = 'id_video';
 
 	function __construct() {
 		parent::__construct();
@@ -25,23 +25,19 @@ class Banner extends REST_Controller {
 		$recordsFiltered = $recordsTotal;
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('judul', $keyword['value']);
-			$this->db->or_like('deskripsi', $keyword['value']);
 			$this->db->or_like('cover', $keyword['value']);
 			$this->db->or_like('is_shown', $keyword['value']);
 			$this->db->or_like('link', $keyword['value']);
-			$this->db->or_like('bahasa', $keyword['value']);
 			$recordsFiltered = $this->db->count_all_results($this->table);
 		}
 
-		$columns = array('id_banner','judul','deskripsi','cover','is_shown','link','bahasa');
-		$this->db->select('id_banner,judul,deskripsi,concat("'.base_url('assets/uploads/banner/').'",cover) as cover,is_shown,link,bahasa');
+		$columns = array('id_video','judul','cover','is_shown','link');
+		$this->db->select('id_video,judul,concat("'.base_url('assets/uploads/video/').'",cover) as cover,is_shown,link');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('judul', $keyword['value']);
-			$this->db->or_like('deskripsi', $keyword['value']);
 			$this->db->or_like('cover', $keyword['value']);
 			$this->db->or_like('is_shown', $keyword['value']);
 			$this->db->or_like('link', $keyword['value']);
-			$this->db->or_like('bahasa', $keyword['value']);
 		}
 		if(isset($offset) && $limit != '-1') {
 			$this->db->limit($limit, $offset);
@@ -69,20 +65,18 @@ class Banner extends REST_Controller {
 	function save_post(){
 		$id = $this->input->post('id');
 		$data['judul'] = $this->input->post('judul');
-		$data['deskripsi'] = $this->input->post('deskripsi');
 		$data['link'] = $this->input->post('link');
-		$data['bahasa'] = $this->input->post('bahasa');
 		
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
-		$this->upload_file_config('./assets/uploads/banner/', $new_name);
+		$this->upload_file_config('./assets/uploads/video/', $new_name);
 
 		if ($this->upload->do_upload('file')) {
 			$uploaded = $this->upload->data();
 			$data['cover'] = $uploaded['file_name'];
 			$old = $this->get_one($id);
 			if ($old) {
-				unlink('./assets/uploads/banner/'.$old->foto);
+				unlink('./assets/uploads/video/'.$old->foto);
 			}
 		}
 

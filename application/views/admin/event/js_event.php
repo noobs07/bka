@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel" id="title">
-					Form Banner
+					Form Event
 				</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">
@@ -15,38 +15,25 @@
 				<input type="hidden" name="id" id="id" />
 				<div class="modal-body">
 					<div class="row">
-						<div class="form-group col-md-6">
+						<div class="form-group col-6">
 							<label for="judul">
-								Judul
+								Nama Event
 							</label>
 							<input type="text" class="form-control" id="judul" name="judul" required />
 						</div>
-						<div class="form-group col-md-6">
+						<div class="form-group col-6">
 							<label for="file">
-								Cover
+								Gambar
 							</label>
-							<input type="file" class="form-control" id="file" name="file" accept="image/png,image/jpeg"/>
-						</div>
-						<div class="form-group col-md-6">
-							<label for="link">
-								Link
-							</label>
-							<input type="text" class="form-control" id="link" name="link" required />
-						</div>
-						<div class="form-group col-md-6">
-							<label for="bahasa">
-								Bahasa
-							</label>
-							<select class="form-control" id="bahasa" name="bahasa" required>
-								<option value="ID" selected>Indonesia</option>
-								<option value="EN">Inggris</option>
-							</select>
+							<div class="custom-file">
+								<input type="file" class="form-control" id="file" name="file" accept="image/png,image/jpeg"/>
+							</div>
 						</div>
 						<div class="form-group col-12">
-							<label for="deskripsi">
-								Deskripsi
+							<label for="konten">
+								Konten
 							</label>
-							<textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>
+							<textarea class="form-control" id="konten" name="konten"></textarea>
 						</div>
 					</div>
 				</div>
@@ -104,17 +91,15 @@
 	const input_id = $('#id');
 
 	const input_judul = $('#judul')
-	const input_deskripsi = $('#deskripsi').summernote({
+	const input_konten = $('#konten').summernote({
 		height: 100,
 		dialogsInBody: true,
 		callbacks: {
 			onImageUpload: function(files) {
-				uploadSummernote('#deskripsi', files[0], 'banner')
+				uploadSummernote('#konten', files[0], 'event')
 			},
 		}
 	})
-	const input_link = $('#link')
-	const input_bahasa = $('#bahasa')
 	const input_file = $('#file');
 
 	function editRow(id){
@@ -125,11 +110,9 @@
 			beforeSend: function (xhr, settings){
 			},
 			success: function(response){
-				input_id.val(response['id_banner'])
+				input_id.val(response['id_event'])
 				input_judul.val(response['judul'])
-				input_deskripsi.summernote('code',response['deskripsi'])
-				input_link.val(response['link'])
-				input_bahasa.val(response['bahasa'])
+				input_konten.summernote('code',response['konten'])
 				// input_file.val(response['cover'])
 			},
 			error: function(error){
@@ -140,20 +123,16 @@
 	form_modal.on('hidden.bs.modal', function(e) {
 		input_id.val('')
 		input_judul.val('')
-		input_deskripsi.summernote('code','')
+		input_konten.summernote('code','')
 		input_file.val('')
-		input_link.val('')
-		input_bahasa.val('ID')
 	});
 
 	$('#save_form').submit(function(event) {
 		event.preventDefault();
 		var formData = new FormData();
 		formData.append('judul', input_judul.val());
-		formData.append('deskripsi', input_deskripsi.val());
+		formData.append('konten', input_konten.val());
 		formData.append('file', input_file[0].files[0]);
-		formData.append('link', input_link.val());
-		formData.append('bahasa', input_bahasa.val());
 		if (input_id.val()){
 			formData.append('id', input_id.val());
 		}
@@ -207,55 +186,19 @@
 		table.ajax.reload(null, false);
 	}
 
-	toggleActive = (e,id) => {
-		const btn = $(e);
-		const icon = btn.find('i');
-		const is_shown = ((btn.data('is_shown') == '0') ? '1' : '0');
-		$.ajax({
-			type: 'POST',
-			url: "<?php echo base_url('api/'.$module.'/toggle/') ?>",
-			data: {id: id, is_shown: is_shown},
-			success: (response)=>{
-				if (response) {
-					btn.data('is_shown', is_shown);
-					if (is_shown=='1') {
-						btn.removeClass('btn-secondary');
-						btn.addClass('btn-success');
-						icon.removeClass('fa-toggle-off');
-						icon.addClass('fa-toggle-on');
-						toastr.success('Ditampilkan')
-					} else {
-						btn.removeClass('btn-success');
-						btn.addClass('btn-secondary');
-						icon.removeClass('fa-toggle-on');
-						icon.addClass('fa-toggle-off');
-						toastr.success('Disembunyikan')
-					}
-				}
-			},
-			error: (error) => {
-				toastr.error(error.status + ' ' + error.statusText)
-			},
-			fail: (reason)=>{
-			},
-			dataType: 'json'
-		});
-	}
-
 	$(document).ready( function () {
 		table = $('#table').DataTable({
 			'responsive': true,
 			'processing': true,
 			'serverSide': true,
-			'ajax': '<?= base_url('api/banner/all') ?>',
+			'ajax': '<?= base_url('api/event/all') ?>',
 			'columns': [
-			{title: 'ID',data: 'id_banner'},
+			{title: 'ID',data: 'id_event'},
 			{title: 'Judul',data: 'judul'},
-			{title: 'Deskripsi',data: 'deskripsi'},
+			{title: 'Konten',data: 'konten'},
 			{title: 'Cover',data: 'cover'},
-			{title: 'Link',data: 'link'},
-			{title: 'Bahasa',data: 'bahasa'},
-			{title: 'Aksi',data: 'id_banner'},
+			{title: 'Posted on',data: 'posted_date'},
+			{title: 'Aksi',data: 'id_event'},
 			],
 			'columnDefs': [
 			{
@@ -266,25 +209,13 @@
 			},
 			{
 				'render': function (data, type, row) {
-					let shownBtn = 
-					`<button type="button" class="m-btn btn btn-success" data-is_shown=${row.is_shown} onclick="toggleActive(this,${row.id_banner})">
-					<i class="fa fa-toggle-on"></i>
-					</button>`;
-
-					if (row.is_shown=='0') {
-						shownBtn = 
-						`<button type="button" class="m-btn btn btn-secondary" data-is_shown=${row.is_shown} onclick="toggleActive(this,${row.id_banner})">
-						<i class="fa fa-toggle-off"></i>
-						</button>`;
-					}
 					return `
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
-					${shownBtn}
-					<button class="btn btn-warning" onclick="editRow(${row.id_banner})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
-					<button class="btn btn-danger" onclick="deleteRow(${row.id_banner})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
+					<button class="btn btn-warning" onclick="editRow(${row.id_event})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
+					<button class="btn btn-danger" onclick="deleteRow(${row.id_event})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 6
+				'targets': 5
 			},
 			],
 		});
