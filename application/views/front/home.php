@@ -139,14 +139,14 @@
 		</div>	
 		<div class="row" style="padding-left: 100px; padding-right: 100px;">
 			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
+				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
 				<div class="text pt-4">
 					
 					<p>Montana GLASS Tipe 1</p>
 				</div>
 			</div>
 			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
+				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
 				<div class="text pt-4">
 					
 					<p>Montana GLASS Tipe 1</p>
@@ -154,7 +154,7 @@
 				</div>
 			</div>
 			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
+				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
 				<div class="text pt-4">
 					
 					<p> Montana GLASSTipe 1</p>
@@ -162,7 +162,7 @@
 				</div>
 			</div>
 			<div class="col-md-3 course ftco-animate">
-				<div class="img" style="background-image: url(<?= base_url('assets/front/images/lima.jpg') ?>);"></div>
+				<div class="img" style="background-image: url(<?= base_url('assets/front/images/produk/bigroot/bigroot-disinfectan.png') ?>);"></div>
 				<div class="text pt-4">
 					
 					<p> Montana GLASS Tipe 1</p>
