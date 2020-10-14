@@ -15,19 +15,32 @@
 				<input type="hidden" name="id" id="id" />
 				<div class="modal-body">
 					<div class="row">
-						<div class="form-group col-6">
+						<div class="form-group col-md-6">
 							<label for="judul">
 								Judul
 							</label>
 							<input type="text" class="form-control" id="judul" name="judul" required />
 						</div>
-						<div class="form-group col-6">
+						<div class="form-group col-md-6">
 							<label for="file">
 								Cover
 							</label>
-							<div class="custom-file">
-								<input type="file" class="form-control" id="file" name="file" accept="image/png,image/jpeg"/>
-							</div>
+							<input type="file" class="form-control" id="file" name="file" accept="image/png,image/jpeg"/>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="link">
+								Link
+							</label>
+							<input type="text" class="form-control" id="link" name="link" required />
+						</div>
+						<div class="form-group col-md-6">
+							<label for="bahasa">
+								Bahasa
+							</label>
+							<select class="form-control" id="bahasa" name="bahasa" required>
+								<option value="ID" selected>Indonesia</option>
+								<option value="EN">Inggris</option>
+							</select>
 						</div>
 						<div class="form-group col-12">
 							<label for="deskripsi">
@@ -100,6 +113,8 @@
 			},
 		}
 	})
+	const input_link = $('#link')
+	const input_bahasa = $('#bahasa')
 	const input_file = $('#file');
 
 	function editRow(id){
@@ -113,6 +128,8 @@
 				input_id.val(response['id_banner'])
 				input_judul.val(response['judul'])
 				input_deskripsi.summernote('code',response['deskripsi'])
+				input_link.val(response['link'])
+				input_bahasa.val(response['bahasa'])
 				// input_file.val(response['cover'])
 			},
 			error: function(error){
@@ -125,6 +142,8 @@
 		input_judul.val('')
 		input_deskripsi.summernote('code','')
 		input_file.val('')
+		input_link.val('')
+		input_bahasa.val('ID')
 	});
 
 	$('#save_form').submit(function(event) {
@@ -133,6 +152,8 @@
 		formData.append('judul', input_judul.val());
 		formData.append('deskripsi', input_deskripsi.val());
 		formData.append('file', input_file[0].files[0]);
+		formData.append('link', input_link.val());
+		formData.append('bahasa', input_bahasa.val());
 		if (input_id.val()){
 			formData.append('id', input_id.val());
 		}
@@ -202,11 +223,13 @@
 						btn.addClass('btn-success');
 						icon.removeClass('fa-toggle-off');
 						icon.addClass('fa-toggle-on');
+						toastr.success('Ditampilkan')
 					} else {
 						btn.removeClass('btn-success');
 						btn.addClass('btn-secondary');
 						icon.removeClass('fa-toggle-on');
 						icon.addClass('fa-toggle-off');
+						toastr.success('Disembunyikan')
 					}
 				}
 			},
@@ -230,6 +253,8 @@
 			{title: 'Judul',data: 'judul'},
 			{title: 'Deskripsi',data: 'deskripsi'},
 			{title: 'Cover',data: 'cover'},
+			{title: 'Link',data: 'link'},
+			{title: 'Bahasa',data: 'bahasa'},
 			{title: 'Aksi',data: 'id_banner'},
 			],
 			'columnDefs': [
@@ -259,7 +284,7 @@
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_banner})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 4
+				'targets': 6
 			},
 			],
 		});
