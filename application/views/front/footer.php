@@ -7,7 +7,7 @@
 					<div class="block-23 mb-3">
 						<ul>
 							<li style="display: list-item;padding:0;float:none"><span class="text">PT BINTANG ANUGERAH UTAMA</span></li>
-							<li style="display: list-item;padding:0;float:none"><span class="text">Established in 2003, ISMAYA GROUP’s vision is to be a leader in building strong and everlasting lifestyle brands globally in the lifestyle & hospitality industry</span></li>
+							<li style="display: list-item;padding:0;float:none"><span class="text">Established in 2019, PT. Bintang kencana Anugrah’s vision is to be a market leader to create “the up to date” brands in manufacturing industry in Indonesia and global with innovative and creative ways.</span></li>
 
 						</ul>
 					</div>
@@ -27,23 +27,22 @@
 				<div class="ftco-footer-widget mb-5 ml-md-4">
 					<h2 class="ftco-heading-2" style="font-size: 14px;">Links Internal</h2>
 					<ul class="list-unstyled">
-						<li style="display: list-item;padding:0;float:none"><a href="#">Home</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">About</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Services</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">Deparments</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Contact</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url()?>">Home</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile')?>">Profile</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile')?>"></span>Bigroot</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/profile')?>">Vermont</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/news')?>"></span>News</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=base_url('home/howtouse')?>"></span>How To Use</a></li>
 					</ul>
 				</div>
 			</div>
 			<div class="col-md-6 col-lg-3" >
 				<div class="ftco-footer-widget mb-5 ml-md-4">
-					<h2 class="ftco-heading-2" style="font-size: 14px;">Links Internal</h2>
+					<h2 class="ftco-heading-2" style="font-size: 14px;">Links Ekternal</h2>
 					<ul class="list-unstyled">
-						<li style="display: list-item;padding:0;float:none"><a href="#">Home</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">About</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Services</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">Deparments</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Contact</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="#">Facebook</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="#">Instagram</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Tiktok</a></li>
 					</ul>
 				</div>
 			</div>
