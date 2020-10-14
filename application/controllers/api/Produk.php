@@ -26,6 +26,7 @@ class Produk extends REST_Controller {
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
+			$this->db->or_like('tentang', $keyword['value']);
 			$this->db->or_like('bahasa', $keyword['value']);
 			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
 				$this->db->or_like('jenis', '1');
@@ -35,11 +36,12 @@ class Produk extends REST_Controller {
 			$recordsFiltered = $this->db->count_all_results($this->table);
 		}
 
-		$columns = array('id_produk','nama','deskripsi','bahasa','jenis');
-		$this->db->select('id_produk,nama,deskripsi,bahasa,jenis');
+		$columns = array('id_produk','nama','deskripsi','tentang','bahasa','jenis');
+		$this->db->select('id_produk,nama,deskripsi,tentang,bahasa,jenis');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
+			$this->db->or_like('tentang', $keyword['value']);
 			$this->db->or_like('bahasa', $keyword['value']);
 			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
 				$this->db->or_like('jenis', '1');
@@ -81,6 +83,7 @@ class Produk extends REST_Controller {
 		$id = $this->input->post('id');
 		$data['nama'] = $this->input->post('nama');
 		$data['deskripsi'] = $this->input->post('deskripsi');
+		$data['tentang'] = $this->input->post('tentang');
 		$data['jenis'] = $this->input->post('jenis');
 		$data['bahasa'] = $this->input->post('bahasa');
 
@@ -89,17 +92,19 @@ class Produk extends REST_Controller {
 		$this->upload_file_config('./assets/uploads/produk/');
 
 		$files = array();
-		foreach ($_FILES['file']['name'] as $key => $filename) {
+		if ($_FILES){
+			foreach ($_FILES['file']['name'] as $key => $filename) {
 
-			$_FILES['upload']['name']= $_FILES['file']['name'][$key];
-			$_FILES['upload']['type']= $_FILES['file']['type'][$key];
-			$_FILES['upload']['tmp_name']= $_FILES['file']['tmp_name'][$key];
-			$_FILES['upload']['error']= $_FILES['file']['error'][$key];
-			$_FILES['upload']['size']= $_FILES['file']['size'][$key];
+				$_FILES['upload']['name']= $_FILES['file']['name'][$key];
+				$_FILES['upload']['type']= $_FILES['file']['type'][$key];
+				$_FILES['upload']['tmp_name']= $_FILES['file']['tmp_name'][$key];
+				$_FILES['upload']['error']= $_FILES['file']['error'][$key];
+				$_FILES['upload']['size']= $_FILES['file']['size'][$key];
 
-			if ($this->upload->do_upload('upload')) {
-				$uploaded = $this->upload->data();
-				array_push($files, $filename);
+				if ($this->upload->do_upload('upload')) {
+					$uploaded = $this->upload->data();
+					array_push($files, $filename);
+				}
 			}
 		}
 

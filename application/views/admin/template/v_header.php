@@ -134,7 +134,7 @@
 						<li class="nav-item">
 							<a href="<?= base_url('admin/kontak') ?>" class="nav-link <?= ($module=='kontak') ? 'active' : '' ?>">
 								<i class="fas fa-envelope nav-icon"></i>
-								<p>Kontak</p>
+								<p>Kontak Kami</p>
 							</a>
 						</li>
 						<li class="nav-item">

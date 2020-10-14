@@ -21,6 +21,9 @@
 						<li class="nav-item">
 							<a class="nav-link" id="photo-tab" data-toggle="pill" href="#photo" role="tab" aria-controls="photo" aria-selected="false">Foto</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" id="about-tab" data-toggle="pill" href="#about" role="tab" aria-controls="about" aria-selected="false">Tentang Produk</a>
+						</li>
 					</ul>
 					<div class="tab-content" id="custom-content-below-tabContent">
 						<div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
@@ -71,6 +74,16 @@
 									<h3 class="m-dropzone__msg-title">
 										Seret dan lepas file disini atau klik untuk pilih file
 									</h3>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+							<div class="col-12">
+								<div class="form-group">
+									<label for="tentang">
+										Tentang Produk
+									</label>
+									<textarea class="form-control" id="tentang" name="tentang"></textarea>
 								</div>
 							</div>
 						</div>
@@ -162,6 +175,15 @@
 			},
 		}
 	})
+	const input_tentang = $('#tentang').summernote({
+		height: 100,
+		dialogsInBody: true,
+		callbacks: {
+			onImageUpload: function(files) {
+				uploadSummernote('#tentang', files[0], 'produk')
+			},
+		}
+	})
 	const input_jenis = $('#jenis')
 	const input_bahasa = $('#bahasa')
 
@@ -212,6 +234,7 @@
 				input_id.val(response['id_produk'])
 				input_nama.val(response['nama'])
 				input_deskripsi.summernote('code',response['deskripsi'])
+				input_tentang.summernote('code',response['tentang'])
 				input_jenis.val(response['jenis'])
 				input_bahasa.val(response['bahasa'])
 			},
@@ -226,6 +249,7 @@
 		input_jenis.val('1')
 		input_bahasa.val('ID')
 		input_deskripsi.summernote('code','')
+		input_tentang.summernote('code','')
 	});
 
 	$('#save_form').submit(function(event) {
@@ -233,6 +257,7 @@
 		var formData = new FormData();
 		formData.append('nama', input_nama.val());
 		formData.append('deskripsi', input_deskripsi.val());
+		formData.append('tentang', input_tentang.val());
 		formData.append('jenis', input_jenis.val());
 		formData.append('bahasa', input_bahasa.val());
 		dropzone.files.forEach((item)=>{
@@ -302,6 +327,7 @@
 			{title: 'ID',data: 'id_produk'},
 			{title: 'Nama Produk',data: 'nama'},
 			{title: 'Deskripsi',data: 'deskripsi'},
+			{title: 'Tentang',data: 'tentang'},
 			{title: 'Jenis',data: 'jenis'},
 			{title: 'Bahasa',data: 'bahasa'},
 			{title: 'Aksi',data: 'id_produk'},
@@ -309,10 +335,26 @@
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
+					const d = $(row.deskripsi)
+					if (row.deskripsi) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
+						else { return '-' }
+					},
+				'targets': 2
+			},
+			{
+				'render': function (data, type, row) {
+					const d = $(row.tentang)
+					if (row.tentang) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
+						else { return '-' }
+					},
+				'targets': 3
+			},
+			{
+				'render': function (data, type, row) {
 					if (row.jenis == '1') { return 'Bigroot'} 
 						else { return 'Vermont' }
 					},
-				'targets': 3
+				'targets': 4
 			},
 			{
 				'render': function (data, type, row) {
@@ -323,7 +365,7 @@
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_produk})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 5
+				'targets': 6
 			},
 			],
 		});

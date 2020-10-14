@@ -21,6 +21,12 @@
 							</label>
 							<input type="text" class="form-control" id="email" name="email" required />
 						</div>
+						<div class="form-group col-12">
+							<label for="pesan">
+								Pesan
+							</label>
+							<textarea class="form-control" id="pesan" name="pesan"></textarea>
+						</div>
 					</div>
 				</div>
 				<div class="modal-footer">
@@ -68,7 +74,6 @@
 </div>
 
 <script type="text/javascript">
-	Dropzone.autoDiscover = false;
 
 	let table = null;
 	const form_modal = $('#form_modal');
@@ -77,6 +82,15 @@
 	const input_id = $('#id');
 
 	const input_email = $('#email')
+	const input_pesan = $('#pesan').summernote({
+		height: 100,
+		dialogsInBody: true,
+		callbacks: {
+			onImageUpload: function(files) {
+				uploadSummernote('#pesan', files[0], 'kontak')
+			},
+		}
+	})
 
 	function editRow(id){
 		$.ajax({
@@ -88,6 +102,7 @@
 			success: function(response){
 				input_id.val(response['id_kontak'])
 				input_email.val(response['email'])
+				input_pesan.summernote('code', response['pesan'])
 			},
 			error: function(error){
 			}
@@ -97,12 +112,14 @@
 	form_modal.on('hidden.bs.modal', function(e) {
 		input_id.val('')
 		input_email.val('')
+		input_pesan.summernote('code', '')
 	});
 
 	$('#save_form').submit(function(event) {
 		event.preventDefault();
 		var formData = new FormData();
 		formData.append('email', input_email.val());
+		formData.append('pesan', input_pesan.val());
 		if (input_id.val()){
 			formData.append('id', input_id.val());
 		}
@@ -165,9 +182,19 @@
 			'columns': [
 			{title: 'ID',data: 'id_kontak'},
 			{title: 'Email',data: 'email'},
+			{title: 'Pesan',data: 'pesan'},
+			{title: 'Waktu Kirim',data: 'waktu_kirim'},
 			{title: 'Aksi',data: 'id_kontak'},
 			],
 			'columnDefs': [
+			{
+				'render': function (data, type, row) {
+					const d = $(row.pesan)
+					if (row.pesan) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
+						else { return '-' }
+					},
+				'targets': 2
+			},
 			{
 				'render': function (data, type, row) {
 					return `
@@ -176,7 +203,7 @@
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_kontak})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 2
+				'targets': 4
 			},
 			],
 		});

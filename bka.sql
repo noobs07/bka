@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 07:44 PM
+-- Generation Time: Oct 14, 2020 at 09:59 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -89,7 +89,8 @@ CREATE TABLE `event` (
 CREATE TABLE `kontak` (
   `id_kontak` int(11) NOT NULL,
   `email` text NOT NULL,
-  `pesan` text DEFAULT NULL
+  `pesan` text DEFAULT NULL,
+  `waktu_kirim` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -119,6 +120,7 @@ CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `nama` text NOT NULL,
   `deskripsi` text DEFAULT NULL,
+  `tentang` text DEFAULT NULL,
   `bahasa` enum('ID','EN') NOT NULL DEFAULT 'ID',
   `jenis` tinyint(1) NOT NULL COMMENT '1 bigroot, 2 vermont'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -322,7 +324,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `video`
 --
 ALTER TABLE `video`
-  MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

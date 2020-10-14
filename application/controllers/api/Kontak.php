@@ -29,8 +29,8 @@ class Kontak extends REST_Controller {
 			$recordsFiltered = $this->db->count_all_results($this->table);
 		}
 
-		$columns = array('id_kontak','email','pesan');
-		$this->db->select('id_kontak,email,pesan');
+		$columns = array('id_kontak','email','pesan','waktu_kirim');
+		$this->db->select('id_kontak,email,pesan,waktu_kirim');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('email', $keyword['value']);
 			$this->db->or_like('pesan', $keyword['value']);
@@ -61,6 +61,7 @@ class Kontak extends REST_Controller {
 	function save_post(){
 		$id = $this->input->post('id');
 		$data['email'] = $this->input->post('email');
+		$data['pesan'] = $this->input->post('pesan');
 
 		$result = false;
 		if ($id) {

@@ -203,6 +203,14 @@
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
+					const d = $(row.konten)
+					if (row.konten) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
+						else { return '-' }
+					},
+				'targets': 2
+			},
+			{
+				'render': function (data, type, row) {
 					return `<img onerror="imgError(this)" src='${row.cover}' style='width:100px' />`;
 				},
 				'targets': 3
