@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2020 at 05:08 PM
+-- Generation Time: Oct 14, 2020 at 07:44 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -32,7 +32,9 @@ CREATE TABLE `banner` (
   `judul` text DEFAULT NULL,
   `deskripsi` text DEFAULT NULL,
   `cover` varchar(255) NOT NULL,
-  `is_shown` tinyint(1) NOT NULL
+  `is_shown` tinyint(1) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `bahasa` enum('ID','EN') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -46,6 +48,7 @@ CREATE TABLE `berita` (
   `judul` text NOT NULL,
   `konten` text NOT NULL,
   `cover` varchar(255) DEFAULT NULL,
+  `bahasa` enum('ID','EN') NOT NULL DEFAULT 'ID',
   `posted_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -60,6 +63,21 @@ CREATE TABLE `ecommerce` (
   `nama` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   `icon` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `id_event` int(11) NOT NULL,
+  `judul` text NOT NULL,
+  `konten` text NOT NULL,
+  `cover` varchar(255) DEFAULT NULL,
+  `bahasa` enum('ID','EN') NOT NULL DEFAULT 'ID',
+  `posted_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,13 +109,6 @@ CREATE TABLE `pengaturan` (
   `reseller_rule` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pengaturan`
---
-
-INSERT INTO `pengaturan` (`id`, `profil`, `promo`, `twitter`, `facebook`, `instagram`, `alamat`, `reseller_rule`) VALUES
-(4, '<p><br><img src=\"http://localhost/bka/assets/admin/uploads/pengaturan/vsazorwkxfl.png\" xss=removed></p>', '<p><br></p>', '', '', '', '<p><br></p>', '<p><br></p>');
-
 -- --------------------------------------------------------
 
 --
@@ -107,7 +118,9 @@ INSERT INTO `pengaturan` (`id`, `profil`, `promo`, `twitter`, `facebook`, `insta
 CREATE TABLE `produk` (
   `id_produk` int(11) NOT NULL,
   `nama` text NOT NULL,
-  `deskripsi` text DEFAULT NULL
+  `deskripsi` text DEFAULT NULL,
+  `bahasa` enum('ID','EN') NOT NULL DEFAULT 'ID',
+  `jenis` tinyint(1) NOT NULL COMMENT '1 bigroot, 2 vermont'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -156,6 +169,20 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `username`, `password`, `email`) VALUES
 (1, 'bka', '2e156fa3e747f797eb3a220c675ebce8', 'admin@gmail.com');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `video`
+--
+
+CREATE TABLE `video` (
+  `id_video` int(11) NOT NULL,
+  `judul` text NOT NULL,
+  `cover` text NOT NULL,
+  `link` text NOT NULL,
+  `is_shown` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -177,6 +204,12 @@ ALTER TABLE `berita`
 --
 ALTER TABLE `ecommerce`
   ADD PRIMARY KEY (`id_ecommerce`);
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id_event`);
 
 --
 -- Indexes for table `kontak`
@@ -216,6 +249,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
+-- Indexes for table `video`
+--
+ALTER TABLE `video`
+  ADD PRIMARY KEY (`id_video`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -223,43 +262,49 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `banner`
 --
 ALTER TABLE `banner`
-  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_banner` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ecommerce`
 --
 ALTER TABLE `ecommerce`
-  MODIFY `id_ecommerce` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_ecommerce` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kontak`
 --
 ALTER TABLE `kontak`
-  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kontak` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengaturan`
 --
 ALTER TABLE `pengaturan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `produk_foto`
 --
 ALTER TABLE `produk_foto`
-  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_foto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `reseller`
@@ -272,6 +317,12 @@ ALTER TABLE `reseller`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `video`
+--
+ALTER TABLE `video`
+  MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

@@ -31,7 +31,7 @@ class Ecommerce extends REST_Controller {
 		}
 
 		$columns = array('id_ecommerce','nama','link','icon');
-		$this->db->select('id_ecommerce,nama,link,concat("'.base_url('assets/admin/uploads/ecommerce/').'",icon) as icon');
+		$this->db->select('id_ecommerce,nama,link,concat("'.base_url('assets/uploads/ecommerce/').'",icon) as icon');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('link', $keyword['value']);
@@ -67,14 +67,14 @@ class Ecommerce extends REST_Controller {
 
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
-		$this->upload_file_config('./assets/admin/uploads/ecommerce/', $new_name);
+		$this->upload_file_config('./assets/uploads/ecommerce/', $new_name);
 
 		if ($this->upload->do_upload('file')) {
 			$uploaded = $this->upload->data();
 			$data['icon'] = $uploaded['file_name'];
 			$old = $this->get_one($id);
 			if ($old) {
-				unlink('./assets/admin/uploads/ecommerce/'.$old->foto);
+				unlink('./assets/uploads/ecommerce/'.$old->foto);
 			}
 		}
 

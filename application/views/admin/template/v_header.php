@@ -108,6 +108,12 @@
 							</a>
 						</li>
 						<li class="nav-item">
+							<a href="<?= base_url('admin/berita') ?>" class="nav-link <?= ($module=='berita') ? 'active' : '' ?>">
+								<i class="fas fa-star nav-icon"></i>
+								<p>Event</p>
+							</a>
+						</li>
+						<li class="nav-item">
 							<a href="<?= base_url('admin/ecommerce') ?>" class="nav-link <?= ($module=='ecommerce') ? 'active' : '' ?>">
 								<i class="fas fa-store nav-icon"></i>
 								<p>Official Store</p>
@@ -129,6 +135,12 @@
 							<a href="<?= base_url('admin/kontak') ?>" class="nav-link <?= ($module=='kontak') ? 'active' : '' ?>">
 								<i class="fas fa-envelope nav-icon"></i>
 								<p>Kontak</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/video') ?>" class="nav-link <?= ($module=='video') ? 'active' : '' ?>">
+								<i class="fas fa-video nav-icon"></i>
+								<p>Video</p>
 							</a>
 						</li>
 						<li class="nav-item">

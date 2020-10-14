@@ -59,6 +59,11 @@
 							<button type="submit" class="btn btn-primary btn-block">Sign In</button>
 						</div>
 						<!-- /.col -->
+						<?php if ($this->session->flashdata('error_msg')) { ?>
+							<div class="col-12 text-center">
+								<span style="color: red"><?= $this->session->flashdata('error_msg'); ?></span>
+							</div>
+						<?php } ?>
 					</div>
 				</form>
 
