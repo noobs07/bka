@@ -108,7 +108,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="<?= base_url('admin/berita') ?>" class="nav-link <?= ($module=='berita') ? 'active' : '' ?>">
+							<a href="<?= base_url('admin/event') ?>" class="nav-link <?= ($module=='event') ? 'active' : '' ?>">
 								<i class="fas fa-star nav-icon"></i>
 								<p>Event</p>
 							</a>
