@@ -53,64 +53,62 @@
         </div>
       </div>
     </section>
-	<section class="ftco-section ftco-no-pt ftc-no-pb">
-		<div class="container">
-			<div class="row d-flex">
-				<div class="col-md-5 order-md-last wrap-about wrap-about d-flex align-items-stretch">
-					<div class="img" style="background-image: url(<?= base_url('assets/front/images/contoh.jpg') ?>); border"></div>
-				</div>
-				<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
-					<h2 class="mb-4">Siapakah Kami ?</h2>
-					<p>Kami menyediakan berbagai jenis Cairan Disinfektan (Disinfectant) untuk area komersil hingga Pabrik. Semua cairan Disinfektan dibuat oleh Klenco Singapore dan sudah dilengkapi dengan SDS (Safety Data Sheet). </br></br>  Cairan Disinfektan adalah cairan khusus yang digunakan untuk membunuh virus dan bakteri penyebab penyakit. Cairan Disinfektan dapat digunakan sebagai proses Sanitasi di semua area seperti area Kantor, Rumah Sakit, Hotel, Restaurant, Rumah, hingga area Pabrik.</p>
-					<div class="row mt-5">
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-security"></span></div>
-								<div class="text pl-3">
-									<h3>Safety First</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-reading"></span></div>
-								<div class="text pl-3">
-									<h3>Regular Classes</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-diploma"></span></div>
-								<div class="text pl-3">
-									<h3>Certified Teachers</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="services-2 d-flex">
-								<div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
-								<div class="text pl-3">
-									<h3>Sufficient Classrooms</h3>
-									<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+	<section class="ftco-section">
+	<div class="container">
+	<div class="row justify-content-center mb-5 pb-2">
+			<div class="col-md-8 text-center heading-section ftco-animate">
+				<h2 class="mb-4"><span>Our</span> VIdeos</h2>
+				<p >Enjoy Our Videos</p>
 			</div>
 		</div>
+			<div class="row justify-content-center mb-2 pb-2 d-flex">
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-handsanitizer-100.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://www.youtube.com/watch?v=pw7qdpevg8A" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-disinfectan.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-handsanitizer-100.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 course ftco-animate">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-disinfectan.png') ?>);">
+						<div class="video justify-content-center">
+							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>	
+			
+		</div>
+	</div>
 	</section>
 	
 
 	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);" data-stellar-background-ratio="0.5">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-2 d-flex">
-				<div class="col-md-6 align-items-stretch d-flex">
+				<div class="col-md-3 align-items-stretch d-flex">
 					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);">
 						<div class="video justify-content-center">
 							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
@@ -206,6 +204,7 @@
 		</div>
 	</div>
 </section>
+<!--Dimunculkan jika datanya nanti sudah ada -->
 <!--section class="ftco-section bg-light">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">

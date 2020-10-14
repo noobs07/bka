@@ -40,9 +40,9 @@
 				<div class="ftco-footer-widget mb-5 ml-md-4">
 					<h2 class="ftco-heading-2" style="font-size: 14px;">Links Ekternal</h2>
 					<ul class="list-unstyled">
-						<li style="display: list-item;padding:0;float:none"><a href="#">Facebook</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#">Instagram</a></li>
-						<li style="display: list-item;padding:0;float:none"><a href="#"></span>Tiktok</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=$facebook?>">Facebook</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=$instagram?>">Instagram</a></li>
+						<li style="display: list-item;padding:0;float:none"><a href="<?=$twitter?>"></span>Tiktok</a></li>
 					</ul>
 				</div>
 			</div>

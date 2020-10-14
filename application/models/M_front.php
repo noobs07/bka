@@ -36,6 +36,12 @@ class M_front extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function get_pengaturan(){
+		$this->db->select('*');
+		$this->db->from("pengaturan");
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 }
 ?>
