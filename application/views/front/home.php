@@ -25,7 +25,7 @@
         </div>
       </div>
 	  
-	   <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/vermont-banner.png')?>images/produk/bigroot/bigroot-banner-handsanitizer.png);">
+	   <div class="slider-item" style="background-image:url(<?= base_url('assets/front/images/produk/vermont-banner.png')?>);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
