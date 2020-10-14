@@ -1,13 +1,13 @@
 <section class="home-slider owl-carousel">
 <?php foreach ($banner as $data){?>
-	  <div class="slider-item" style="background-image:url(<?= base_url("assets/admin/uploads/banner/$data->cover") ?>);">
+	  <div class="slider-item" style="background-image:url(<?= base_url("assets/uploads/banner/$data->cover") ?>);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate">
             <h1 class="mb-4"><?=$data->judul?></h1>
             <p><?=$data->deskripsi?></p>
-            <p><a href="<?=$data->link?>" class="btn btn-primary px-4 py-3 mt-3">visit</a></p>
+            <p><a href="<?=$data->link?>" class="btn btn-primary px-4 py-3 mt-3">More</a></p>
           </div>
         </div>
         </div>
