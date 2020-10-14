@@ -103,12 +103,10 @@
 		</div>
 	</div>
 	</section>
-	
-
 	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);" data-stellar-background-ratio="0.5">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-2 d-flex">
-				<div class="col-md-3 align-items-stretch d-flex">
+				<div class="col-md-5 align-items-stretch d-flex">
 					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);">
 						<div class="video justify-content-center">
 							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
