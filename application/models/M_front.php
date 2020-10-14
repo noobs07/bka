@@ -48,6 +48,19 @@ class M_front extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+	public function get_video(){
+		$this->db->select('*');
+		$this->db->from("video");
+		$this->db->order_by('id_video','desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
+	public function get_market(){
+		$this->db->select('*');
+		$this->db->from("ecommerce");
+		$query = $this->db->get();
+		return $query->result();
+	}
 
 }
 ?>

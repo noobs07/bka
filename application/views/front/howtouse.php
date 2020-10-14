@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url('assets/front/images/bg_1.jpg')?>');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('<?=base_url('assets/front/images/logo-banner.png')?>');">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -44,29 +44,8 @@
 <section class="ftco-gallery">
   <div class="container-wrap">
     <div class="row no-gutters">
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/enam.jpg')?>);">
-          <div class="icon mb-4 d-flex align-items-center justify-content-center">
-            <span class="icon-instagram"></span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/tuju.jpg')?>);">
-          <div class="icon mb-4 d-flex align-items-center justify-content-center">
-            <span class="icon-instagram"></span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/lima.jpg')?>);">
-          <div class="icon mb-4 d-flex align-items-center justify-content-center">
-            <span class="icon-instagram"></span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/tiga.jpg')?>);">
+      <div class="col-md-8 ftco-animate">
+        <a href="<?=base_url('assets/front/images/bigroot.png')?>" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/bigroot.png')?>);">
           <div class="icon mb-4 d-flex align-items-center justify-content-center">
             <span class="icon-instagram"></span>
           </div>
@@ -107,29 +86,8 @@
 <section class="ftco-gallery">
   <div class="container-wrap">
     <div class="row no-gutters">
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/enam.jpg')?>);">
-          <div class="icon mb-4 d-flex align-items-center justify-content-center">
-            <span class="icon-instagram"></span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/tuju.jpg')?>);">
-          <div class="icon mb-4 d-flex align-items-center justify-content-center">
-            <span class="icon-instagram"></span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/lima.jpg')?>);">
-          <div class="icon mb-4 d-flex align-items-center justify-content-center">
-            <span class="icon-instagram"></span>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3 ftco-animate">
-        <a href="images/image_4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/tiga.jpg')?>);">
+    <div class="col-md-8 ftco-animate">
+        <a href="<?=base_url('assets/front/images/vermont.png')?>" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/vermont.png')?>);">
           <div class="icon mb-4 d-flex align-items-center justify-content-center">
             <span class="icon-instagram"></span>
           </div>
@@ -180,34 +138,13 @@
 <section class="ftco-gallery">
  <div class="container-wrap">
   <div class="row no-gutters">
-   <div class="col-md-3 ftco-animate">
-    <a href="images/image_1.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/enam.jpg')?>);">
-     <div class="icon mb-4 d-flex align-items-center justify-content-center">
-      <span class="icon-instagram"></span>
-    </div>
-  </a>
-</div>
-<div class="col-md-3 ftco-animate">
-  <a href="images/image_2.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/tuju.jpg')?>);">
-   <div class="icon mb-4 d-flex align-items-center justify-content-center">
-    <span class="icon-instagram"></span>
-  </div>
-</a>
-</div>
-<div class="col-md-3 ftco-animate">
-  <a href="images/image_3.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/lima.jpg')?>);">
-   <div class="icon mb-4 d-flex align-items-center justify-content-center">
-    <span class="icon-instagram"></span>
-  </div>
-</a>
-</div>
-<div class="col-md-3 ftco-animate">
-  <a href="images/image_4.jpg" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/tiga.jpg')?>);">
-   <div class="icon mb-4 d-flex align-items-center justify-content-center">
-    <span class="icon-instagram"></span>
-  </div>
-</a>
-</div>
+  <div class="col-md-8 ftco-animate">
+        <a href="<?=base_url('assets/front/images/vermont.png')?>" class="gallery image-popup img d-flex align-items-center" style="background-image: url(<?=base_url('assets/front/images/vermont.png')?>);">
+          <div class="icon mb-4 d-flex align-items-center justify-content-center">
+            <span class="icon-instagram"></span>
+          </div>
+        </a>
+      </div>
 </div>
 </div>
 </section>

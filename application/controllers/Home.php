@@ -16,7 +16,9 @@ class Home extends CI_Controller {
 		$data['bigroot']=$this->M_front->get_produk(1);
 		$data['vermont']=$this->M_front->get_produk(2);
 		$data['news']=$this->M_front->get_news();
+		$data['video']=$this->M_front->get_video();
 		$pengaturan=$this->get_pengaturan();
+		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/home', $data);
 		$this->load->view('front/footer',$pengaturan);
 	}
@@ -31,6 +33,15 @@ class Home extends CI_Controller {
 			$hasil['facebook']=$data->facebook;
 			$hasil['twitter']=$data->twitter;
 			$hasil['instagram']=$data->instagram;
+		}
+		return $hasil;
+	}
+	public function get_market(){
+		$market = $this->M_front->get_market();
+		foreach($market as $data){
+			$hasil['nama'][]=$data->nama;
+			$hasil['link'][]=$data->link;
+			$hasil['icon'][]=$data->icon;
 		}
 		return $hasil;
 	}

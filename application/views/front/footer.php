@@ -15,10 +15,10 @@
 				
 				<div class="ftco-footer-widget mb-5">
 					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3" style="display:contents;">
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce1.png') ?>"></li>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce2.png') ?>"></li>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce3.png') ?>"></li>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url('assets/front/images/ecommerce4.png') ?>"></li>
+						<?php for($i=0;$i<=count($ecommerce);$i++){
+							$icon=$ecommerce['icon'][$i]?>
+						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url("assets/uploads/ecommerce/$icon") ?>"></li>
+						<?php } ?>
 					</ul>
 				</div>
 

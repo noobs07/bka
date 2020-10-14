@@ -62,15 +62,17 @@
 			</div>
 		</div>
 			<div class="row justify-content-center mb-2 pb-2 d-flex">
+				<?php foreach($video as $data){?>
 				<div class="col-md-3 course ftco-animate">
-					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-handsanitizer-100.png') ?>);">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?=base_url("assets/uploads/video/$data->cover")?>);">
 						<div class="video justify-content-center">
-							<a href="https://www.youtube.com/watch?v=pw7qdpevg8A" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+							<a href="<?=$data->link?>" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
 								<span class="ion-ios-play"></span>
 							</a>
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 				<div class="col-md-3 course ftco-animate">
 					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/admin/uploads/produk/bigroot-disinfectan.png') ?>);">
 						<div class="video justify-content-center">
