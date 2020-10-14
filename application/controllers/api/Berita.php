@@ -76,7 +76,7 @@ class Berita extends REST_Controller {
 			$data['cover'] = $uploaded['file_name'];
 			$old = $this->get_one($id);
 			if ($old) {
-				unlink('./assets/uploads/berita/'.$old->foto);
+				unlink('./assets/uploads/berita/'.$old->cover);
 			}
 		}
 
