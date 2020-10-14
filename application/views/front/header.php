@@ -37,7 +37,7 @@
 				<a href="#">Produk</a>
 				<input type="checkbox" id="drop-1"/>
 				<ul>
-					<li><a href="<?=base_url('home/produk')?>">Big Root</a></li>
+					<li><a href="<?=base_url('home/produk')?>">Bigroot</a></li>
 					<li><a href="<?=base_url('home/produk')?>">Vermont</a></li>
 				</ul> 
 
