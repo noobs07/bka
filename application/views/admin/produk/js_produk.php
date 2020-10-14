@@ -25,13 +25,37 @@
 					<div class="tab-content" id="custom-content-below-tabContent">
 						<div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
 							<div class="row">
-								<div class="col-12">
+								<div class="col-md-4">
 									<div class="form-group">
 										<label for="nama">
 											Nama Produk
 										</label>
 										<input type="text" class="form-control" id="nama" name="nama" required />
 									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="jenis">
+											Jenis
+										</label>
+										<select class="form-control" id="jenis" name="jenis" required>
+											<option value="1" selected>Bigroot</option>
+											<option value="2">Vermont</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="bahasa">
+											Bahasa
+										</label>
+										<select class="form-control" id="bahasa" name="bahasa" required>
+											<option value="ID" selected>Indonesia</option>
+											<option value="EN">Inggris</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-12">
 									<div class="form-group">
 										<label for="deskripsi">
 											Deskripsi
@@ -138,6 +162,8 @@
 			},
 		}
 	})
+	const input_jenis = $('#jenis')
+	const input_bahasa = $('#bahasa')
 
 	const photos_div = $('#photos-div');
 
@@ -186,6 +212,8 @@
 				input_id.val(response['id_produk'])
 				input_nama.val(response['nama'])
 				input_deskripsi.summernote('code',response['deskripsi'])
+				input_jenis.val(response['jenis'])
+				input_bahasa.val(response['bahasa'])
 			},
 			error: function(error){
 			}
@@ -195,6 +223,8 @@
 	form_modal.on('hidden.bs.modal', function(e) {
 		input_id.val('')
 		input_nama.val('')
+		input_jenis.val('1')
+		input_bahasa.val('ID')
 		input_deskripsi.summernote('code','')
 	});
 
@@ -203,6 +233,8 @@
 		var formData = new FormData();
 		formData.append('nama', input_nama.val());
 		formData.append('deskripsi', input_deskripsi.val());
+		formData.append('jenis', input_jenis.val());
+		formData.append('bahasa', input_bahasa.val());
 		dropzone.files.forEach((item)=>{
 			formData.append('file[]', item);
 		})
@@ -270,9 +302,18 @@
 			{title: 'ID',data: 'id_produk'},
 			{title: 'Nama Produk',data: 'nama'},
 			{title: 'Deskripsi',data: 'deskripsi'},
+			{title: 'Jenis',data: 'jenis'},
+			{title: 'Bahasa',data: 'bahasa'},
 			{title: 'Aksi',data: 'id_produk'},
 			],
 			'columnDefs': [
+			{
+				'render': function (data, type, row) {
+					if (row.jenis == '1') { return 'Bigroot'} 
+						else { return 'Vermont' }
+					},
+				'targets': 3
+			},
 			{
 				'render': function (data, type, row) {
 					return `
@@ -282,7 +323,7 @@
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_produk})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 3
+				'targets': 5
 			},
 			],
 		});

@@ -26,14 +26,26 @@ class Produk extends REST_Controller {
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
+			$this->db->or_like('bahasa', $keyword['value']);
+			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
+				$this->db->or_like('jenis', '1');
+			} else if (strpos('vermont', strtolower($keyword['value']))!==false) {
+				$this->db->or_like('jenis', '2');
+			}
 			$recordsFiltered = $this->db->count_all_results($this->table);
 		}
 
-		$columns = array('id_produk','nama','deskripsi');
-		$this->db->select('id_produk,nama,deskripsi');
+		$columns = array('id_produk','nama','deskripsi','bahasa','jenis');
+		$this->db->select('id_produk,nama,deskripsi,bahasa,jenis');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
+			$this->db->or_like('bahasa', $keyword['value']);
+			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
+				$this->db->or_like('jenis', '1');
+			} else if (strpos('vermont', strtolower($keyword['value']))!==false) {
+				$this->db->or_like('jenis', '2');
+			}
 		}
 		if(isset($offset) && $limit != '-1') {
 			$this->db->limit($limit, $offset);
@@ -60,7 +72,7 @@ class Produk extends REST_Controller {
 
 	function photos_get(){
 		$id = $this->get('id');
-		$this->db->select('concat("'.base_url('assets/admin/uploads/produk/').'",file) as file');
+		$this->db->select('concat("'.base_url('assets/uploads/produk/').'",file) as file');
 		$data = $this->db->where($this->id_column,$id)->get('produk_foto')->result();
 		$this->response($data, 200);
 	}
@@ -69,10 +81,12 @@ class Produk extends REST_Controller {
 		$id = $this->input->post('id');
 		$data['nama'] = $this->input->post('nama');
 		$data['deskripsi'] = $this->input->post('deskripsi');
+		$data['jenis'] = $this->input->post('jenis');
+		$data['bahasa'] = $this->input->post('bahasa');
 
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
-		$this->upload_file_config('./assets/admin/uploads/produk/');
+		$this->upload_file_config('./assets/uploads/produk/');
 
 		$files = array();
 		foreach ($_FILES['file']['name'] as $key => $filename) {

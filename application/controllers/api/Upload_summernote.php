@@ -17,7 +17,7 @@ class Upload_summernote extends REST_Controller {
 
 	function index_post(){
 		$dir = $this->input->post('dir');
-		$path = './assets/admin/uploads/';
+		$path = './assets/uploads/';
 		if (isset($dir) && $dir != null) {
 			$path = $path.$dir;
 		}
@@ -29,7 +29,7 @@ class Upload_summernote extends REST_Controller {
 		if ($this->upload->do_upload('file')){
 			$uploaded = $this->upload->data();
 
-			$url = base_url('assets/admin/uploads/'.$dir.'/'.$uploaded['file_name']);
+			$url = base_url('assets/uploads/'.$dir.'/'.$uploaded['file_name']);
 
 			$this->response($url, 200);
 		} else {
