@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2020 at 09:59 PM
+-- Generation Time: Oct 15, 2020 at 04:48 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -103,6 +103,8 @@ CREATE TABLE `pengaturan` (
   `id` int(11) NOT NULL,
   `profil` text NOT NULL,
   `promo` text NOT NULL,
+  `link_promo` varchar(255) NOT NULL,
+  `image_promo` varchar(255) NOT NULL,
   `twitter` varchar(255) NOT NULL,
   `facebook` varchar(255) NOT NULL,
   `instagram` varchar(255) NOT NULL,

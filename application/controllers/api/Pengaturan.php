@@ -27,11 +27,25 @@ class Pengaturan extends REST_Controller {
 		$id = $this->input->post('id');
 		$data['profil'] = $this->input->post('profil');
 		$data['promo'] = $this->input->post('promo');
+		$data['link_promo'] = $this->input->post('link_promo');
 		$data['twitter'] = $this->input->post('twitter');
 		$data['facebook'] = $this->input->post('facebook');
 		$data['instagram'] = $this->input->post('instagram');
 		$data['alamat'] = $this->input->post('alamat');
 		$data['reseller_rule'] = $this->input->post('reseller_rule');
+
+		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
+		$new_name = substr(str_shuffle($permitted_chars), 0, 11);
+		$this->upload_file_config('./assets/uploads/', $new_name);
+
+		if ($this->upload->do_upload('file')) {
+			$uploaded = $this->upload->data();
+			$data['image_promo'] = $uploaded['file_name'];
+			$old = $this->get_one($id);
+			if ($old) {
+				unlink('./assets/uploads/'.$old->image_promo);
+			}
+		}
 
 		$result = false;
 		if ($id) {
@@ -40,13 +54,18 @@ class Pengaturan extends REST_Controller {
 			$result = $this->db->update($this->table, $data);
 		} else {
 			$result = $this->db->insert($this->table, $data);
+			$id = $this->db->insert_id();
 		}
 
 		if ($result) {
-			$this->response($this->input->post(), 200);
+			$this->response($this->get_one($id), 200);
 		} else {
 			$this->response($data, 400);
 		}
+	}
+
+	function get_one($id){
+		return $this->db->where($this->id_column,$id)->get($this->table)->row();
 	}
 
 }

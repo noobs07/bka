@@ -34,15 +34,6 @@
 							<div class="tab-content" id="custom-content-below-tabContent">
 								<div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="profil-tab">
 									<div class="row">
-										<div class="col-12" style="display: none;">
-											<div class="form-group">
-												<label for="gambar_profil">
-													Gambar
-												</label>
-												<input type="file" class="form-control" id="gambar_profil" name="gambar_profil" required style="display: none;" />
-												<img src="" style="width: 100px" />
-											</div>
-										</div>
 										<div class="col-12">
 											<div class="form-group">
 												<label for="profil_input">
@@ -56,58 +47,83 @@
 									</div>
 								</div>
 								<div class="tab-pane fade" id="promo" role="tabpanel" aria-labelledby="promo-tab">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="promo_input">
-												Promo
-											</label>
-											<textarea class="form-control" id="promo_input" name="promo_input" style="display: none;"></textarea>
-											<p id="promo_text">Loading ...</p>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="link_promo">
+													Link Promo Video
+												</label>
+												<input type="text" class="form-control" id="link_promo" name="link_promo" required style="display: none;" />
+												<p id="link_promo_text">Loading ...</p>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="image_promo">
+													Cover Promo
+												</label>
+												<input type="file" class="form-control" id="image_promo" name="image_promo" required style="display: none;" />
+												<br/>
+												<img id="cover_promo" src="" style="width: 100px" />
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="form-group">
+												<label for="promo_input">
+													Promo
+												</label>
+												<textarea class="form-control" id="promo_input" name="promo_input" style="display: none;"></textarea>
+												<p id="promo_text">Loading ...</p>
+											</div>
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="kontak" role="tabpanel" aria-labelledby="kontak-tab">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="alamat_input">
-												Alamat
-											</label>
-											<textarea class="form-control" id="alamat_input" name="alamat_input" style="display: none;"></textarea>
-											<p id="alamat_text">Loading ...</p>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="alamat_input">
+													Alamat
+												</label>
+												<textarea class="form-control" id="alamat_input" name="alamat_input" style="display: none;"></textarea>
+												<p id="alamat_text">Loading ...</p>
+											</div>
 										</div>
-									</div>
-									<div class="col-6">
-										<div class="form-group">
-											<label for="twitter_input">
-												Twitter
-											</label>
-											<textarea class="form-control" id="twitter_input" name="twitter_input" style="display: none;"></textarea>
-											<p id="twitter_text">Loading ...</p>
-										</div>
-										<div class="form-group">
-											<label for="facebook_input">
-												Facebook
-											</label>
-											<textarea class="form-control" id="facebook_input" name="facebook_input" style="display: none;"></textarea>
-											<p id="facebook_text">Loading ...</p>
-										</div>
-										<div class="form-group">
-											<label for="instagram_input">
-												Instagram
-											</label>
-											<textarea class="form-control" id="instagram_input" name="instagram_input" style="display: none;"></textarea>
-											<p id="instagram_text">Loading ...</p>
+										<div class="col-6">
+											<div class="form-group">
+												<label for="twitter_input">
+													Twitter
+												</label>
+												<textarea class="form-control" id="twitter_input" name="twitter_input" style="display: none;"></textarea>
+												<p id="twitter_text">Loading ...</p>
+											</div>
+											<div class="form-group">
+												<label for="facebook_input">
+													Facebook
+												</label>
+												<textarea class="form-control" id="facebook_input" name="facebook_input" style="display: none;"></textarea>
+												<p id="facebook_text">Loading ...</p>
+											</div>
+											<div class="form-group">
+												<label for="instagram_input">
+													Instagram
+												</label>
+												<textarea class="form-control" id="instagram_input" name="instagram_input" style="display: none;"></textarea>
+												<p id="instagram_text">Loading ...</p>
+											</div>
 										</div>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="reseller" role="tabpanel" aria-labelledby="reseller-tab">
-									<div class="col-12">
-										<div class="form-group">
-											<label for="reseller_rule_input">
-												Reseller Rule
-											</label>
-											<textarea class="form-control" id="reseller_rule_input" name="reseller_rule_input" style="display: none;"></textarea>
-											<p id="reseller_rule_text">Loading ...</p>
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												<label for="reseller_rule_input">
+													Reseller Rule
+												</label>
+												<textarea class="form-control" id="reseller_rule_input" name="reseller_rule_input" style="display: none;"></textarea>
+												<p id="reseller_rule_text">Loading ...</p>
+											</div>
 										</div>
 									</div>
 								</div>

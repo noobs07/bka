@@ -8,6 +8,12 @@
 	let profil = $('#profil_input')
 	let profil_text = $('#profil_text')
 
+	let link_promo = $('#link_promo')
+	let link_promo_text = $('#link_promo_text')
+
+	let input_image_promo = $('#image_promo')
+	let cover_promo = $('#cover_promo')
+
 	let promo = $('#promo_input')
 	let promo_text = $('#promo_text')
 
@@ -27,18 +33,24 @@
 	let reseller_rule_text = $('#reseller_rule_text')
 
 	simpan_btn.click((e)=>{
+		var formData = new FormData();
+		formData.append('profil', profil.val());
+		formData.append('promo', promo.val());
+		formData.append('link_promo', link_promo.val());
+		formData.append('alamat', alamat.val());
+		formData.append('twitter', twitter.val());
+		formData.append('facebook', facebook.val());
+		formData.append('instagram', instagram.val());
+		formData.append('reseller_rule', reseller_rule.val());
+		formData.append('file', input_image_promo[0].files[0]);
+		if (input_id.val()){
+			formData.append('id', input_id.val());
+		}
 		$.ajax({
 			url: '<?= base_url('api/'.$module) ?>',
-			data:{
-				id:input_id.val(),
-				profil:profil.val(),
-				promo:promo.val(),
-				alamat:alamat.val(),
-				twitter:twitter.val(),
-				facebook:facebook.val(),
-				instagram:instagram.val(),
-				reseller_rule:reseller_rule.val(),
-			},
+			data: formData,
+			contentType: false,
+			processData: false,
 			type: 'POST',
 			beforeSend: function (xhr, settings){
 				simpan_btn.text('Loading ...')
@@ -48,6 +60,8 @@
 				if (response){
 					profil_text.html(response['profil'])
 					promo_text.html(response['promo'])
+					link_promo_text.html(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
 					alamat_text.html(response['alamat'])
 					twitter_text.html(response['twitter'])
 					facebook_text.html(response['facebook'])
@@ -56,7 +70,7 @@
 				}
 			},
 			error: function(error){
-				simpan_btn.text('Refresh Halaman')
+				simpan_btn.text('Simpan')
 			}
 		})
 	})
@@ -68,6 +82,7 @@
 			beforeSend: function (xhr, settings){
 				profil_text.html('Loading ...')
 				promo_text.html('Loading ...')
+				link_promo_text.html('Loading ...')
 				alamat_text.html('Loading ...')
 				twitter_text.html('Loading ...')
 				facebook_text.html('Loading ...')
@@ -79,6 +94,8 @@
 					input_id.val(response['id'])
 					profil_text.html(response['profil'])
 					promo_text.html(response['promo'])
+					link_promo_text.html(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
 					alamat_text.html(response['alamat'])
 					twitter_text.html(response['twitter'])
 					facebook_text.html(response['facebook'])
@@ -89,6 +106,7 @@
 			error: function(error){
 				profil_text.html('Coba lagi')
 				promo_text.html('Coba lagi')
+				link_promo_text.html('Coba lagi')
 				alamat_text.html('Coba lagi')
 				twitter_text.html('Coba lagi')
 				facebook_text.html('Coba lagi')
@@ -115,6 +133,9 @@
 		})
 		profil_text.hide()
 
+		input_image_promo.show()
+		link_promo.show()
+		link_promo_text.hide()
 		promo = $('#promo_input').summernote({
 			height: 100,
 			dialogsInBody: true,
@@ -162,6 +183,7 @@
 			beforeSend: function (xhr, settings){
 				profil_text.html('Loading ...')
 				promo_text.html('Loading ...')
+				link_promo_text.html('Loading ...')
 				alamat_text.html('Loading ...')
 				twitter_text.html('Loading ...')
 				facebook_text.html('Loading ...')
@@ -173,6 +195,8 @@
 					input_id.val(response['id'])
 					profil.summernote('code',response['profil'])
 					promo.summernote('code',response['promo'])
+					link_promo.val(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
 					alamat.summernote('code',response['alamat'])
 					twitter.val(response['twitter'])
 					facebook.val(response['facebook'])
@@ -202,6 +226,9 @@
 		profil.hide()
 		profil_text.show()
 
+		input_image_promo.hide()
+		link_promo.hide()
+		link_promo_text.show()
 		promo.summernote('destroy')
 		promo.hide()
 		promo_text.show()
@@ -235,6 +262,8 @@
 					input_id.val(response['id'])
 					profil_text.html(response['profil'])
 					promo_text.html(response['promo'])
+					link_promo_text.html(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
 					alamat_text.html(response['alamat'])
 					twitter_text.html(response['twitter'])
 					facebook_text.html(response['facebook'])
@@ -243,6 +272,7 @@
 				} else {
 					profil_text.text('Kosong')
 					promo_text.text('Kosong')
+					link_promo_text.text('Kosong')
 					alamat_text.text('Kosong')
 					twitter_text.text('Kosong')
 					facebook_text.text('Kosong')
