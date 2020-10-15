@@ -15,9 +15,10 @@ class Home extends CI_Controller {
 		$data['banner']=$this->M_front->get_banner();
 		$data['bigroot']=$this->M_front->get_produk(1);
 		$data['vermont']=$this->M_front->get_produk(2);
-		$data['news']=$this->M_front->get_news();
+		$data['news']=$this->M_front->get_news(0);
 		$data['video']=$this->M_front->get_video();
 		$pengaturan=$this->get_pengaturan();
+		$data['promo']=$pengaturan['promo'];
 		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/home', $data);
 		$this->load->view('front/footer',$pengaturan);
@@ -33,6 +34,7 @@ class Home extends CI_Controller {
 			$hasil['facebook']=$data->facebook;
 			$hasil['twitter']=$data->twitter;
 			$hasil['instagram']=$data->instagram;
+			$hasil['promo']=$data->promo;
 		}
 		return $hasil;
 	}
@@ -63,17 +65,23 @@ class Home extends CI_Controller {
 			$this->load->view('front/produk', $data);
 		}
 		$pengaturan=$this->get_pengaturan();
+		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/footer', $pengaturan);
 	}
 	function news()
 	{
 		$this->load->view('front/header');
 		if($_GET['id']){
-			$this->load->view('front/newsdetil');
+			$id=$_GET['id'];
+			$data['news']=$this->M_front->get_news($id);
+			$data['news_all']=$this->M_front->get_news(0);
+			$this->load->view('front/newsdetil', $data);
 		}else{
-			$this->load->view('front/news');
+			$data['news']=$this->M_front->get_news($id);
+			$this->load->view('front/news', $data);
 		}
 		$pengaturan=$this->get_pengaturan();
+		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/footer', $pengaturan);
 	}
 	function howtoreseller()
@@ -81,6 +89,7 @@ class Home extends CI_Controller {
 		$this->load->view('front/header');
 		$this->load->view('front/howtoreseller');
 		$pengaturan=$this->get_pengaturan();
+		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/footer', $pengaturan);
 	}
 	function howtouse()
@@ -88,6 +97,7 @@ class Home extends CI_Controller {
 		$this->load->view('front/header');
 		$this->load->view('front/howtouse');
 		$pengaturan=$this->get_pengaturan();
+		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/footer', $pengaturan);
 	}
 	function profile()
@@ -95,7 +105,28 @@ class Home extends CI_Controller {
 		$this->load->view('front/header');
 		$this->load->view('front/profile');
 		$pengaturan=$this->get_pengaturan();
+		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/footer', $pengaturan);
+	}
+	function tambah_kontak(){
+		$data['id_kontak']='';
+		$data['email'] = $_POST['email'];
+		$data['pesan'] = $_POST['pesan'];
+		$data['tanggal']= date("Y/m/d H:i:s");
+		$hasil = $this->M_front->insert_kontak();
+
+	}
+	function tambah_reseller(){
+		date_default_timezone_set("Asia/Bangkok");
+		$data['id_reseller']='';
+		$data['nama'] = $_POST['nama'];
+		$data['alamat'] = $_POST['alamat'];
+		$data['telepon'] = $_POST['telepon'];
+		$data['nama_toko'] = $_POST['nama_toko'];
+		$data['tanggal']= date("Y/m/d H:i:s");
+		//$hasil = $this->M_front->insert_reseller($data);
+		header("location:./howtoreseller");
+
 	}
 }
 ?>

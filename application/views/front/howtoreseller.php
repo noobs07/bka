@@ -1,4 +1,4 @@
-<section class="hero-wrap hero-wrap-2" style="background-image: url(<?= base_url('assets/front/images/bg_1.jpg') ?>);">
+<section class="hero-wrap hero-wrap-2" style="background-image: url(<?= base_url('assets/front/images/logo-banner.png') ?>);">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -41,18 +41,18 @@
  <div class="container">
   <div class="row d-flex align-items-stretch no-gutters">
    <div class="col-md-12 p-12 p-md-12 order-md-last bg-light">
-    <form action="#">
+    <form action="<?=base_url('home/tambah_reseller')?>" method="post">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Your Name">
+        <input type="text" name="nama" id="nama" class="form-control" placeholder="Your Name">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Your Phone">
+        <input type="text" name="telepon" id="telepon" class="form-control" placeholder="Your Phone">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Address">
+        <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Address">
       </div>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Nama Toko">
+        <input type="text" name="nama_toko" id="nama_toko" class="form-control" placeholder="Nama Toko">
       </div>
       <div class="form-group">
         <input type="submit" value="Send Registration" class="btn btn-primary py-3 px-5">

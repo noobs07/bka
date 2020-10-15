@@ -35,10 +35,16 @@ class M_front extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	public function get_news(){
-		$this->db->select('*');
-		$this->db->from("berita");
-		$this->db->order_by('id_berita','desc');
+	public function get_news($id){
+		if($id==0){
+			$this->db->select('*');
+			$this->db->from("berita");
+			$this->db->order_by('id_berita','desc');
+		}else{
+			$this->db->select('*');
+			$this->db->from("berita");
+			$this->db->where("id_berita", $id);
+		}
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -60,6 +66,14 @@ class M_front extends CI_Model {
 		$this->db->from("ecommerce");
 		$query = $this->db->get();
 		return $query->result();
+	}
+	public function insert_kontak($data){
+		$insert = $this->db->insert("kontak",$data);
+		return $insert;
+	}
+	public function insert_reseller($data){
+		$insert = $this->db->insert("reseller",$data);
+		return $insert;
 	}
 
 }

@@ -16,8 +16,8 @@
 				<div class="ftco-footer-widget mb-5">
 					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3" style="display:contents;">
 						<?php for($i=0;$i<=count($ecommerce);$i++){
-							$icon=$ecommerce['icon'][$i]?>
-						<li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url("assets/uploads/ecommerce/$icon") ?>"></li>
+							$icon=$ecommerce['icon'][$i]; $link=$ecommerce['link'][$i];?>
+						<a href="<?=$link?>"><li class="ftco-animate" style="display: content;padding:0;float:none;margin-right: 10px;"><img src="<?= base_url("assets/uploads/ecommerce/$icon") ?>"></li></a>
 						<?php } ?>
 					</ul>
 				</div>
@@ -59,9 +59,9 @@
 				</div>
 				<div class="ftco-footer-widget mb-5">
 					<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3" style="display:contents;">
-						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="#"><span class="icon-twitter"></span></a></li>
-						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="#"><span class="icon-facebook"></span></a></li>
-						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="#"><span class="icon-instagram"></span></a></li>
+						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="<?=$twitter?>"><span class="icon-twitter"></span></a></li>
+						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="<?=$facebook?>"><span class="icon-facebook"></span></a></li>
+						<li class="ftco-animate" style="display: list-item;padding:0;float:none"><a href="<?=$instagram?>"><span class="icon-instagram"></span></a></li>
 					</ul>
 				</div>
 			</div>

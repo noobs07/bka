@@ -118,9 +118,7 @@
 					</div>
 				</div>
 				<div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
-					<h2 class="mb-4">PROMO</h2>
-					<p>AGK menyediakan berbagai jenis Cairan Disinfektan (Disinfectant) untuk area komersil hingga Pabrik. Semua cairan Disinfektan dibuat oleh Klenco Singapore dan sudah dilengkapi dengan SDS (Safety Data Sheet).</p>
-					<p>Cairan Disinfektan adalah cairan khusus yang digunakan untuk membunuh virus dan bakteri penyebab penyakit. Cairan Disinfektan dapat digunakan sebagai proses Sanitasi di semua area seperti area Kantor, Rumah Sakit, Hotel, Restaurant, Rumah, hingga area Pabrik.</p>
+					<?=$promo?>
 				</div>
 			</div>	
 			
