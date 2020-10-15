@@ -19,6 +19,8 @@ class Home extends CI_Controller {
 		$data['video']=$this->M_front->get_video();
 		$pengaturan=$this->get_pengaturan();
 		$data['promo']=$pengaturan['promo'];
+		$data['link_promo']=$pengaturan['link_promo'];
+		$data['image_promo']=$pengaturan['image_promo'];
 		$pengaturan['ecommerce']=$this->get_market();
 		$this->load->view('front/home', $data);
 		$this->load->view('front/footer',$pengaturan);
@@ -35,6 +37,8 @@ class Home extends CI_Controller {
 			$hasil['twitter']=$data->twitter;
 			$hasil['instagram']=$data->instagram;
 			$hasil['promo']=$data->promo;
+			$hasil['link_promo']=$data->link_promo;
+			$hasil['image_promo']=$data->image_promo;
 		}
 		return $hasil;
 	}
@@ -109,11 +113,13 @@ class Home extends CI_Controller {
 		$this->load->view('front/footer', $pengaturan);
 	}
 	function tambah_kontak(){
+		date_default_timezone_set("Asia/Bangkok");
 		$data['id_kontak']='';
 		$data['email'] = $_POST['email'];
 		$data['pesan'] = $_POST['pesan'];
 		$data['tanggal']= date("Y/m/d H:i:s");
-		$hasil = $this->M_front->insert_kontak();
+		$hasil = $this->M_front->insert_kontak($data);
+		header("location:./");
 
 	}
 	function tambah_reseller(){
@@ -124,7 +130,7 @@ class Home extends CI_Controller {
 		$data['telepon'] = $_POST['telepon'];
 		$data['nama_toko'] = $_POST['nama_toko'];
 		$data['tanggal']= date("Y/m/d H:i:s");
-		//$hasil = $this->M_front->insert_reseller($data);
+		$hasil = $this->M_front->insert_reseller($data);
 		header("location:./howtoreseller");
 
 	}

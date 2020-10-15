@@ -17,7 +17,7 @@
     <div class="col-lg-12 ftco-animate">
       <h2 class="mb-3">Rule Untuk Menjadi Reseller</h2>
       <div class="meta" style="margin-bottom: 30px;font-size: 12px;">
-        <div style="float: left; margin-right: 20px;"><a href="#"><span class="icon-calendar"></span> June 27, 2019</a></div>
+        <div style="float: left; margin-right: 20px;"><a href="#"><span class="icon-calendar"></span> Oct 14, 2020</a></div>
         <div><a href="#"><span class="icon-person"></span> Administrator</a></div>
       </div>
 

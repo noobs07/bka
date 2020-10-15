@@ -49,10 +49,10 @@
 			<div class="col-md-6 col-lg-2">
 				<div class="ftco-footer-widget mb-5" >
 					<h2 class="ftco-heading-2" style="font-size: 14px;">Contact Us!</h2>
-					<form action="#" class="subscribe-form">
+					<form action="<?=base_url('home/tambah_kontak')?>" method="post" class="subscribe-form">
 						<div class="form-group">
-							<input type="text" class="form-control mb-2 text-center" placeholder="Enter email address" style="font:000;">
-							<input type="text" class="form-control mb-2 text-center" placeholder="Enter your Message" style="font:000;">
+							<input type="text" name="email" id="email" class="form-control mb-2 text-center" placeholder="Enter email address" style="font:000;">
+							<input type="text" name="pesan" id="pesan" class="form-control mb-2 text-center" placeholder="Enter your Message" style="font:000;">
 							<input type="submit" value="Send Message" class="form-control submit px-3">
 						</div>
 					</form>

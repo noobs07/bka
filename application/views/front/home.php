@@ -53,7 +53,7 @@
         </div>
       </div>
     </section>
-	<section class="ftco-section">
+	<section class="ftco-section bg-light">
 	<div class="container">
 	<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
@@ -105,26 +105,7 @@
 		</div>
 	</div>
 	</section>
-	<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);" data-stellar-background-ratio="0.5">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-2 d-flex">
-				<div class="col-md-5 align-items-stretch d-flex">
-					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url('assets/front/images/tiga.jpg') ?>);">
-						<div class="video justify-content-center">
-							<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
-								<span class="ion-ios-play"></span>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
-					<?=$promo?>
-				</div>
-			</div>	
-			
-		</div>
-	</div>
-</section>
+	
 
 
 <section class="ftco-section">
@@ -170,6 +151,26 @@
 		</div>
 	</div>
 </section>
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(<?= base_url("assets/uploads/$image_promo") ?>);" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-2 d-flex">
+				<div class="col-md-5 align-items-stretch d-flex">
+					<div class="img img-video d-flex align-items-center" style="background-image: url(<?= base_url("assets/uploads/$image_promo") ?>);">
+						<div class="video justify-content-center">
+							<a href="<?=$link_promo?>" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+								<span class="ion-ios-play"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
+					<?=$promo?>
+				</div>
+			</div>	
+			
+		</div>
+	</div>
+</section>
 <section class="ftco-section">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
@@ -184,7 +185,7 @@
 			?>
 			<div class="col-md-6 col-lg-4 ftco-animate">
 				<div class="blog-entry">
-					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url("assets/admin/uploads/berita/$data->cover") ?>);">
+					<a href="blog-single.html" class="block-20 d-flex align-items-end" style="background-image: url(<?= base_url("assets/uploads/berita/$data->cover") ?>);">
 						<div class="meta-date text-center p-2">
 							<span class="day"><?=date_format($date,"d")?></span>
 							<span class="mos"><?=date_format($date,"F")?></span>
