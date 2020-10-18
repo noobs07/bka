@@ -33,6 +33,10 @@ class Pengaturan extends REST_Controller {
 		$data['instagram'] = $this->input->post('instagram');
 		$data['alamat'] = $this->input->post('alamat');
 		$data['reseller_rule'] = $this->input->post('reseller_rule');
+		$data['title_bigroot'] = $this->input->post('title_bigroot');
+		$data['desc_bigroot'] = $this->input->post('desc_bigroot');
+		$data['title_vermont'] = $this->input->post('title_vermont');
+		$data['desc_vermont'] = $this->input->post('desc_vermont');
 
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);

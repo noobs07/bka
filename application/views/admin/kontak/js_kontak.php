@@ -73,6 +73,29 @@
 	</div>
 </div>
 
+<div class="modal fade" id="deskripsi_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					Pesan
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+			</div>
+			<div class="modal-body" id="pesan-div"></div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal">
+					Tutup
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 
 	let table = null;
@@ -91,6 +114,23 @@
 			},
 		}
 	})
+	const pesan_div = $('#pesan-div');
+
+	function getDetail(id){
+		$.ajax({
+			url: '<?= base_url('api/'.$module.'/one') ?>',
+			data: {id:id},
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+			},
+			success: function(response){
+				pesan_div.empty()
+				pesan_div.html(response['pesan'])
+			},
+			error: function(error){
+			}
+		});
+	}
 
 	function editRow(id){
 		$.ajax({
@@ -182,28 +222,20 @@
 			'columns': [
 			{title: 'ID',data: 'id_kontak'},
 			{title: 'Email',data: 'email'},
-			{title: 'Pesan',data: 'pesan'},
 			{title: 'Waktu Kirim',data: 'waktu_kirim'},
 			{title: 'Aksi',data: 'id_kontak'},
 			],
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
-					const d = $(row.pesan)
-					if (row.pesan) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
-						else { return '-' }
-					},
-				'targets': 2
-			},
-			{
-				'render': function (data, type, row) {
 					return `
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
+					<button class="btn btn-primary" onclick="getDetail(${row.id_kontak})" data-toggle="modal" data-target="#deskripsi_modal">Lihat Pesan</button>
 					<button class="btn btn-warning" onclick="editRow(${row.id_kontak})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_kontak})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 4
+				'targets': 3
 			},
 			],
 		});

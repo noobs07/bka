@@ -81,6 +81,29 @@
 	</div>
 </div>
 
+<div class="modal fade" id="deskripsi_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					Konten
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+			</div>
+			<div class="modal-body" id="konten-div"></div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal">
+					Tutup
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 	Dropzone.autoDiscover = false;
 
@@ -101,6 +124,23 @@
 		}
 	})
 	const input_file = $('#file');
+	const konten_div = $('#konten-div');
+
+	function getDetail(id){
+		$.ajax({
+			url: '<?= base_url('api/'.$module.'/one') ?>',
+			data: {id:id},
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+			},
+			success: function(response){
+				konten_div.empty()
+				konten_div.html(response['konten'])
+			},
+			error: function(error){
+			}
+		});
+	}
 
 	function editRow(id){
 		$.ajax({
@@ -195,7 +235,6 @@
 			'columns': [
 			{title: 'ID',data: 'id_berita'},
 			{title: 'Judul',data: 'judul'},
-			{title: 'Konten',data: 'konten'},
 			{title: 'Cover',data: 'cover'},
 			{title: 'Posted on',data: 'posted_date'},
 			{title: 'Aksi',data: 'id_berita'},
@@ -203,27 +242,20 @@
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
-					const d = $(row.konten)
-					if (row.konten) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
-						else { return '-' }
-					},
-				'targets': 2
-			},
-			{
-				'render': function (data, type, row) {
 					return `<img onerror="imgError(this)" src='${row.cover}' style='width:100px' />`;
 				},
-				'targets': 3
+				'targets': 2
 			},
 			{
 				'render': function (data, type, row) {
 					return `
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
+					<button class="btn btn-primary" onclick="getDetail(${row.id_berita})" data-toggle="modal" data-target="#deskripsi_modal">Konten</button>
 					<button class="btn btn-warning" onclick="editRow(${row.id_berita})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_berita})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 5
+				'targets': 4
 			},
 			],
 		});

@@ -93,7 +93,7 @@
 					<button type="reset" class="btn" data-dismiss="modal">
 						Batal
 					</button>
-					<button type="submit" class="btn btn-success">
+					<button type="submit" class="btn btn-success" id="save_btn">
 						Simpan
 					</button>
 				</div>
@@ -133,8 +133,31 @@
 	</div>
 </div>
 
+<div class="modal fade" id="deskripsi_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					Deskripsi
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+			</div>
+			<div class="modal-body" id="deskripsi-div"></div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal">
+					Tutup
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <div class="modal fade" id="photos_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+	<div class="modal-dialog modal-xl" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">
@@ -146,7 +169,30 @@
 					</span>
 				</button>
 			</div>
-			<div class="modal-body" id="photos-div"></div>
+			<div class="modal-body row" id="photos-div"></div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal">
+					Tutup
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="tentang_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">
+					Tentang
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">
+						&times;
+					</span>
+				</button>
+			</div>
+			<div class="modal-body" id="tentang-div"></div>
 			<div class="modal-footer">
 				<button class="btn" data-dismiss="modal">
 					Tutup
@@ -160,6 +206,7 @@
 	Dropzone.autoDiscover = false;
 
 	let table = null;
+	const save_btn = $('#save_btn');
 	const form_modal = $('#form_modal');
 	const delete_modal = $('#delete_modal');
 	const input_delete_id = $('#delete_id');
@@ -187,7 +234,9 @@
 	const input_jenis = $('#jenis')
 	const input_bahasa = $('#bahasa')
 
+	const deskripsi_div = $('#deskripsi-div');
 	const photos_div = $('#photos-div');
+	const tentang_div = $('#tentang-div');
 
 	const dropzone = new Dropzone('div#files', { 
 		autoProcessQueue: false,
@@ -200,22 +249,74 @@
 		}
 	});
 
-	function getPhotos(id){
+	function deletePhoto(id,filename,el){
+		if (confirm('Anda yakin mau hapus foto ini?')){
+			$.ajax({
+				url: '<?= base_url('api/'.$module.'/delete_photo') ?>',
+				data: {id: id, filename:filename},
+				type: 'POST',
+				success: function(response) {
+					$(el).remove()
+					toastr.success('Berhasil dihapus')
+					table.ajax.reload(null, false);
+				},
+				error: function(error){
+					toastr.error('Gagal dihapus')
+				}
+			})
+		}
+	}
+
+	function getDetail(id){
 		$.ajax({
-			url: '<?= base_url('api/'.$module.'/photos') ?>',
+			url: '<?= base_url('api/'.$module.'/detail') ?>',
 			data: {id:id},
 			type: 'GET',
 			beforeSend: function (xhr, settings){
 			},
 			success: function(response){
+				deskripsi_div.empty()
 				photos_div.empty()
-				response.forEach(photo=>{
+				tentang_div.empty()
+
+				deskripsi_div.html(response['deskripsi'])
+				tentang_div.html(response['tentang'])
+				response['photos'].forEach(photo=>{
+					const div = document.createElement('div');
+					div.style.position = 'relative'
+					div.style.width = '100px'
+					div.style.height = '100px'
+					div.style.margin = '10px'
+					div.style.border = '1px solid #9ba4b4'
+					div.style.borderRadius = '4px';
+
 					const img = document.createElement('img');
+					img.style.width = '100%'
+					img.style.height = '100%'
+					img.style.objectFit = 'contain'
 					img.src = photo['file'].replace(' ', '_').replace('%20', '_')
-					img.style.width = '100px'
 					// img.onerror = imgError(img)
 					img.alt = photo['file'].replace(' ', '_').replace('%20', '_')
-					photos_div.append(img)
+					img.onerror = function() {imgError(this)};
+					
+					const i = document.createElement('i');
+					i.className = 'fa fa-trash'
+					i.style.className = 'fa fa-trash'
+
+					i.style.cursor ='pointer';
+					i.style.position = 'absolute';
+					i.style.bottom = '0';
+					i.style.color = 'white';
+					i.style.background = '#ff4b5c';
+					i.style.right = '0';
+					i.style.padding = '10px';
+					i.style.textAlign = 'right';
+					i.style.borderTopLeftRadius = '4px';
+					i.onclick = function() {deletePhoto(photo['id_foto'],photo['filename'],div)};
+
+					div.appendChild(img)
+					div.appendChild(i)
+					photos_div.append(div)
 				})
 			},
 			error: function(error){
@@ -273,13 +374,23 @@
 			processData: false,
 			type: 'POST',
 			beforeSend: function (xhr, settings){
+				save_btn.prop('disabled', true)
+				save_btn.text('Menyimpan')
 			},
 			success: function(response){
+				save_btn.prop('disabled', false)
+				save_btn.text('Simpan')
+
+				dropzone.files.forEach((file)=>{
+					dropzone.removeFile(file);
+				})
 				toastr.success('Berhasil disimpan')
 				table.ajax.reload(null, false);
 				form_modal.modal('hide');
 			},
 			error: function(error){
+				save_btn.prop('disabled', false)
+				save_btn.text('Simpan')
 				toastr.error('Gagal disimpan')
 			}
 		});
@@ -326,8 +437,6 @@
 			'columns': [
 			{title: 'ID',data: 'id_produk'},
 			{title: 'Nama Produk',data: 'nama'},
-			{title: 'Deskripsi',data: 'deskripsi'},
-			{title: 'Tentang',data: 'tentang'},
 			{title: 'Jenis',data: 'jenis'},
 			{title: 'Bahasa',data: 'bahasa'},
 			{title: 'Aksi',data: 'id_produk'},
@@ -335,37 +444,23 @@
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
-					const d = $(row.deskripsi)
-					if (row.deskripsi) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
-						else { return '-' }
+					if (row.jenis == '1') { return 'Bigroot'} 
+						else { return 'Vermont' }
 					},
 				'targets': 2
 			},
 			{
 				'render': function (data, type, row) {
-					const d = $(row.tentang)
-					if (row.tentang) { return (d[0].length>50) ? d[0].innerHTML + ' ...' : d[0].innerHTML }
-						else { return '-' }
-					},
-				'targets': 3
-			},
-			{
-				'render': function (data, type, row) {
-					if (row.jenis == '1') { return 'Bigroot'} 
-						else { return 'Vermont' }
-					},
-				'targets': 4
-			},
-			{
-				'render': function (data, type, row) {
 					return `
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
-					<button class="btn btn-primary" onclick="getPhotos(${row.id_produk})" data-toggle="modal" data-target="#photos_modal"><i class="fa fa-images"></i></button>
+					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#deskripsi_modal">Deskripsi</button>
+					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#photos_modal">Foto</button>
+					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#tentang_modal">Tentang</button>
 					<button class="btn btn-warning" onclick="editRow(${row.id_produk})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_produk})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 6
+				'targets': 4
 			},
 			],
 		});

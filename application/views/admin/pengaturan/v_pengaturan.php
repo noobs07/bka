@@ -30,6 +30,9 @@
 								<li class="nav-item">
 									<a class="nav-link" id="reseller-tab" data-toggle="pill" href="#reseller" role="tab" aria-controls="reseller" aria-selected="false">Reseller Rule</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="tagline-tab" data-toggle="pill" href="#tagline" role="tab" aria-controls="tagline" aria-selected="false">Tagline</a>
+								</li>
 							</ul>
 							<div class="tab-content" id="custom-content-below-tabContent">
 								<div class="tab-pane fade show active" id="profil" role="tabpanel" aria-labelledby="profil-tab">
@@ -123,6 +126,38 @@
 												</label>
 												<textarea class="form-control" id="reseller_rule_input" name="reseller_rule_input" style="display: none;"></textarea>
 												<p id="reseller_rule_text">Loading ...</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane fade" id="tagline" role="tabpanel" aria-labelledby="tagline-tab">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="title_bigroot">
+													Bigroot
+												</label>
+												<input type="text" class="form-control" id="title_bigroot" name="title_bigroot" required style="display: none;" />
+												<p id="bigroot_text">Loading ...</p>
+												<label for="desc_bigroot">
+													Deskripsi
+												</label>
+												<textarea class="form-control" id="desc_bigroot" name="desc_bigroot" style="display: none;"></textarea>
+												<p id="desc_bigroot_text">Loading ...</p>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="title_vermont">
+													Vermont
+												</label>
+												<input type="text" class="form-control" id="title_vermont" name="title_vermont" required style="display: none;" />
+												<p id="vermont_text">Loading ...</p>
+												<label for="desc_vermont">
+													Deskripsi
+												</label>
+												<textarea class="form-control" id="desc_vermont" name="desc_vermont" style="display: none;"></textarea>
+												<p id="desc_vermont_text">Loading ...</p>
 											</div>
 										</div>
 									</div>

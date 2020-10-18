@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 15, 2020 at 04:48 AM
+-- Generation Time: Oct 18, 2020 at 11:25 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -109,7 +109,11 @@ CREATE TABLE `pengaturan` (
   `facebook` varchar(255) NOT NULL,
   `instagram` varchar(255) NOT NULL,
   `alamat` text NOT NULL,
-  `reseller_rule` text NOT NULL
+  `reseller_rule` text NOT NULL,
+  `title_bigroot` text NOT NULL,
+  `title_vermont` text NOT NULL,
+  `desc_bigroot` text NOT NULL,
+  `desc_vermont` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -165,13 +169,6 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id_user`, `username`, `password`, `email`) VALUES
-(1, 'bka', '2e156fa3e747f797eb3a220c675ebce8', 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -320,7 +317,7 @@ ALTER TABLE `reseller`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `video`

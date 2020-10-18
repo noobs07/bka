@@ -2368,7 +2368,8 @@ abstract class REST_Controller extends CI_Controller {
         $config['max_width']  = '10576';
         $config['max_height'] = '5536';
         $config['overwrite'] = true;
-        $config['file_name'] = strtolower(str_replace(" ", "", $filename));
+        $config['encrypt_name'] = TRUE;
+        $config['file_name'] = strtolower($filename);
 
         $this->load->library('upload', $config);
     }

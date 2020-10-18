@@ -72,12 +72,31 @@ class Produk extends REST_Controller {
 		$this->response($data, 200);
 	}
 
-	function photos_get(){
+	function detail_get(){
 		$id = $this->get('id');
-		$this->db->select('concat("'.base_url('assets/uploads/produk/').'",file) as file');
-		$data = $this->db->where($this->id_column,$id)->get('produk_foto')->result();
-		$this->response($data, 200);
+		$this->db->select('id_foto,file as filename,concat("'.base_url('assets/uploads/produk/').'",file) as file');
+		$photos = $this->db->where($this->id_column,$id)->get('produk_foto')->result();
+		$produk = $this->get_one($id);
+		$this->response(
+			(object) array(
+				'deskripsi' => $produk->deskripsi,
+				'photos' => $photos,
+				'tentang' => $produk->tentang,
+			), 200);
 	}
+
+	function delete_photo_post(){
+		$id = $this->input->post('id');
+		$filename = $this->input->post('filename');
+		$this->db->where('id_foto', $id);
+		$result = $this->db->delete('produk_foto');
+		if ($this->db->affected_rows()>0) {
+			unlink('./assets/uploads/produk/'.$filename);
+			$this->response(true, 200);
+		} else {
+			$this->response(null, 400);
+		}
+	} 
 
 	function save_post(){
 		$id = $this->input->post('id');
@@ -103,7 +122,7 @@ class Produk extends REST_Controller {
 
 				if ($this->upload->do_upload('upload')) {
 					$uploaded = $this->upload->data();
-					array_push($files, $filename);
+					array_push($files, $uploaded['file_name']);
 				}
 			}
 		}
