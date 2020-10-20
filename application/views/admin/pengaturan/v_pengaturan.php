@@ -132,7 +132,21 @@
 								</div>
 								<div class="tab-pane fade" id="tagline" role="tabpanel" aria-labelledby="tagline-tab">
 									<div class="row">
-										<div class="col-md-6">
+										<div class="col-md-4">
+											<div class="form-group">
+												<label for="title_videos">
+													Our Videos
+												</label>
+												<input type="text" class="form-control" id="title_videos" name="title_videos" required style="display: none;" />
+												<p id="videos_text">Loading ...</p>
+												<label for="desc_videos">
+													Deskripsi
+												</label>
+												<textarea class="form-control" id="desc_videos" name="desc_videos" style="display: none;"></textarea>
+												<p id="desc_videos_text">Loading ...</p>
+											</div>
+										</div>
+										<div class="col-md-4">
 											<div class="form-group">
 												<label for="title_bigroot">
 													Bigroot
@@ -146,7 +160,7 @@
 												<p id="desc_bigroot_text">Loading ...</p>
 											</div>
 										</div>
-										<div class="col-md-6">
+										<div class="col-md-4">
 											<div class="form-group">
 												<label for="title_vermont">
 													Vermont

@@ -32,6 +32,10 @@
 	let reseller_rule = $('#reseller_rule_input')
 	let reseller_rule_text = $('#reseller_rule_text')
 
+	let title_videos = $('#title_videos')
+	let videos_text = $('#videos_text')
+	let desc_videos = $('#desc_videos')
+	let desc_videos_text = $('#desc_videos_text')
 	let title_bigroot = $('#title_bigroot')
 	let bigroot_text = $('#bigroot_text')
 	let desc_bigroot = $('#desc_bigroot')
@@ -51,6 +55,8 @@
 		formData.append('facebook', facebook.val());
 		formData.append('instagram', instagram.val());
 		formData.append('reseller_rule', reseller_rule.val());
+		formData.append('title_videos', title_videos.val());
+		formData.append('desc_videos', desc_videos.val());
 		formData.append('title_bigroot', title_bigroot.val());
 		formData.append('desc_bigroot', desc_bigroot.val());
 		formData.append('title_vermont', title_vermont.val());
@@ -80,6 +86,8 @@
 					facebook_text.html(response['facebook'])
 					instagram_text.html(response['instagram'])
 					reseller_rule_text.html(response['reseller_rule'])
+					videos_text.html(response['title_videos'])
+					desc_videos_text.html(response['desc_videos'])
 					bigroot_text.html(response['title_bigroot'])
 					desc_bigroot_text.html(response['desc_bigroot'])
 					vermont_text.html(response['title_vermont'])
@@ -105,6 +113,8 @@
 				facebook_text.html('Loading ...')
 				instagram_text.html('Loading ...')
 				reseller_rule_text.html('Loading ...')
+				videos_text.html('Loading ...')
+				desc_videos_text.html('Loading ...')
 				bigroot_text.html('Loading ...')
 				desc_bigroot_text.html('Loading ...')
 				vermont_text.html('Loading ...')
@@ -122,6 +132,8 @@
 					facebook_text.html(response['facebook'])
 					instagram_text.html(response['instagram'])
 					reseller_rule_text.html(response['reseller_rule'])
+					videos_text.html(response['title_videos'])
+					desc_videos_text.html(response['desc_videos'])
 					bigroot_text.html(response['title_bigroot'])
 					desc_bigroot_text.html(response['desc_bigroot'])
 					vermont_text.html(response['title_vermont'])
@@ -137,6 +149,8 @@
 				facebook_text.html('Coba lagi')
 				instagram_text.html('Coba lagi')
 				reseller_rule_text.html('Coba lagi')
+				videos_text.html('Coba lagi')
+				desc_videos_text.html('Coba lagi')
 				bigroot_text.html('Coba lagi')
 				desc_bigroot_text.html('Coba lagi')
 				vermont_text.html('Coba lagi')
@@ -205,6 +219,10 @@
 		})
 		reseller_rule_text.hide()
 
+		title_videos.show()
+		videos_text.hide()
+		desc_videos.show()
+		desc_videos_text.hide()
 		title_bigroot.show()
 		bigroot_text.hide()
 		desc_bigroot.show()
@@ -227,6 +245,12 @@
 				facebook_text.html('Loading ...')
 				instagram_text.html('Loading ...')
 				reseller_rule_text.html('Loading ...')
+				videos_text.html('Loading ...')
+				desc_videos_text.html('Loading ...')
+				bigroot_text.html('Loading ...')
+				desc_bigroot_text.html('Loading ...')
+				vermont_text.html('Loading ...')
+				desc_vermont_text.html('Loading ...')
 			},
 			success: function(response){
 				if (response) {
@@ -240,6 +264,8 @@
 					facebook.val(response['facebook'])
 					instagram.val(response['instagram'])
 					reseller_rule.summernote('code',response['reseller_rule'])
+					title_videos.val(response['title_videos'])
+					desc_videos.val(response['desc_videos'])
 					title_bigroot.val(response['title_bigroot'])
 					desc_bigroot.val(response['desc_bigroot'])
 					title_vermont.val(response['title_vermont'])
@@ -254,6 +280,12 @@
 				facebook_text.html('Coba lagi')
 				instagram_text.html('Coba lagi')
 				reseller_rule_text.html('Coba lagi')
+				videos_text.html('Coba lagi')
+				desc_videos_text.html('Coba lagi')
+				bigroot_text.html('Coba lagi')
+				desc_bigroot_text.html('Coba lagi')
+				vermont_text.html('Coba lagi')
+				desc_vermont_text.html('Coba lagi')
 			}
 		})
 	}
@@ -290,6 +322,10 @@
 		reseller_rule.hide()
 		reseller_rule_text.show()
 
+		title_videos.hide()
+		videos_text.show()
+		desc_videos.hide()
+		desc_videos_text.show()
 		title_bigroot.hide()
 		bigroot_text.show()
 		desc_bigroot.hide()
@@ -320,6 +356,8 @@
 					facebook_text.html(response['facebook'])
 					instagram_text.html(response['instagram'])
 					reseller_rule_text.html(response['reseller_rule'])
+					videos_text.html(response['title_videos'])
+					desc_videos_text.html(response['desc_videos'])
 					bigroot_text.html(response['title_bigroot'])
 					desc_bigroot_text.html(response['desc_bigroot'])
 					vermont_text.html(response['title_vermont'])
@@ -333,6 +371,8 @@
 					facebook_text.text('Kosong')
 					instagram_text.text('Kosong')
 					reseller_rule_text.text('Kosong')
+					videos_text.html('Kosong')
+					desc_videos_text.html('Kosong')
 					bigroot_text.html('Kosong')
 					desc_bigroot_text.html('Kosong')
 					vermont_text.html('Kosong')

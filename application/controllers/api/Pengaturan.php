@@ -33,6 +33,8 @@ class Pengaturan extends REST_Controller {
 		$data['instagram'] = $this->input->post('instagram');
 		$data['alamat'] = $this->input->post('alamat');
 		$data['reseller_rule'] = $this->input->post('reseller_rule');
+		$data['title_videos'] = $this->input->post('title_videos');
+		$data['desc_videos'] = $this->input->post('desc_videos');
 		$data['title_bigroot'] = $this->input->post('title_bigroot');
 		$data['desc_bigroot'] = $this->input->post('desc_bigroot');
 		$data['title_vermont'] = $this->input->post('title_vermont');
