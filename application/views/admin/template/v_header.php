@@ -150,6 +150,12 @@
 								<p>Pengaturan</p>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a href="<?= base_url('admin/akun') ?>" class="nav-link <?= ($module=='akun') ? 'active' : '' ?>">
+								<i class="fas fa-cogs nav-icon"></i>
+								<p>Pengaturan Akun</p>
+							</a>
+						</li>
 					</ul>
 				</nav>
 				<!-- /.sidebar-menu -->
