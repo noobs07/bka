@@ -28,6 +28,9 @@ class Produk extends REST_Controller {
 			$this->db->or_like('deskripsi', $keyword['value']);
 			$this->db->or_like('tentang', $keyword['value']);
 			$this->db->or_like('bahasa', $keyword['value']);
+			$this->db->or_like('toko_online1', $keyword['value']);
+			$this->db->or_like('toko_online2', $keyword['value']);
+			$this->db->or_like('whatsapp', $keyword['value']);
 			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
 				$this->db->or_like('jenis', '1');
 			} else if (strpos('vermont', strtolower($keyword['value']))!==false) {
@@ -36,13 +39,16 @@ class Produk extends REST_Controller {
 			$recordsFiltered = $this->db->count_all_results($this->table);
 		}
 
-		$columns = array('id_produk','nama','deskripsi','tentang','bahasa','jenis');
-		$this->db->select('id_produk,nama,deskripsi,tentang,bahasa,jenis');
+		$columns = array('id_produk','nama','jenis','bahasa','toko_online1','whatsapp');
+		$this->db->select('id_produk,nama,deskripsi,tentang,bahasa,jenis,toko_online1,toko_online2,whatsapp');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
 			$this->db->or_like('tentang', $keyword['value']);
 			$this->db->or_like('bahasa', $keyword['value']);
+			$this->db->or_like('toko_online1', $keyword['value']);
+			$this->db->or_like('toko_online2', $keyword['value']);
+			$this->db->or_like('whatsapp', $keyword['value']);
 			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
 				$this->db->or_like('jenis', '1');
 			} else if (strpos('vermont', strtolower($keyword['value']))!==false) {
@@ -100,11 +106,26 @@ class Produk extends REST_Controller {
 
 	function save_post(){
 		$id = $this->input->post('id');
-		$data['nama'] = $this->input->post('nama');
-		$data['deskripsi'] = $this->input->post('deskripsi');
-		$data['tentang'] = $this->input->post('tentang');
-		$data['jenis'] = $this->input->post('jenis');
-		$data['bahasa'] = $this->input->post('bahasa');
+		$data['nama'] 		= $this->input->post('nama');
+		$data['deskripsi'] 	= $this->input->post('deskripsi');
+		$data['tentang'] 	= $this->input->post('tentang');
+		$data['jenis'] 		= $this->input->post('jenis');
+		$data['bahasa'] 	= $this->input->post('bahasa');
+		$toko_online1 		= $this->input->post('toko_online1');
+		$toko_online2 		= $this->input->post('toko_online2');
+		$whatsapp 			= $this->input->post('whatsapp');
+
+		if ($toko_online1) {
+			$data['toko_online1']	= $toko_online1;
+		}
+
+		if ($toko_online2) {
+			$data['toko_online2']	= $toko_online2;
+		}
+
+		if ($whatsapp) {
+			$data['whatsapp']	= $whatsapp;
+		}
 
 		$permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 		$new_name = substr(str_shuffle($permitted_chars), 0, 11);

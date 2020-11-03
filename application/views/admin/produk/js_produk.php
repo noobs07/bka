@@ -28,7 +28,7 @@
 					<div class="tab-content" id="custom-content-below-tabContent">
 						<div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
 							<div class="row">
-								<div class="col-md-4">
+								<div class="col-md-4 col-sm-12">
 									<div class="form-group">
 										<label for="nama">
 											Nama Produk
@@ -36,7 +36,7 @@
 										<input type="text" class="form-control" id="nama" name="nama" required />
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 col-sm-12">
 									<div class="form-group">
 										<label for="jenis">
 											Jenis
@@ -47,7 +47,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4">
+								<div class="col-md-4 col-sm-12">
 									<div class="form-group">
 										<label for="bahasa">
 											Bahasa
@@ -56,6 +56,30 @@
 											<option value="ID" selected>Indonesia</option>
 											<option value="EN">Inggris</option>
 										</select>
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<div class="form-group">
+										<label for="toko_online1">
+											Toko Online 1
+										</label>
+										<input type="text" class="form-control" id="toko_online1" name="toko_online1" />
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<div class="form-group">
+										<label for="toko_online2">
+											Toko Online 2
+										</label>
+										<input type="text" class="form-control" id="toko_online2" name="toko_online2" />
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-12">
+									<div class="form-group">
+										<label for="whatsapp">
+											WhatsApp
+										</label>
+										<input type="text" class="form-control" id="whatsapp" name="whatsapp" />
 									</div>
 								</div>
 								<div class="col-12">
@@ -233,6 +257,9 @@
 	})
 	const input_jenis = $('#jenis')
 	const input_bahasa = $('#bahasa')
+	const input_toko_online1 = $('#toko_online1')
+	const input_toko_online2 = $('#toko_online2')
+	const input_whatsapp = $('#whatsapp')
 
 	const deskripsi_div = $('#deskripsi-div');
 	const photos_div = $('#photos-div');
@@ -338,6 +365,9 @@
 				input_tentang.summernote('code',response['tentang'])
 				input_jenis.val(response['jenis'])
 				input_bahasa.val(response['bahasa'])
+				input_toko_online1.val(response['toko_online1'])
+				input_toko_online2.val(response['toko_online2'])
+				input_whatsapp.val(response['whatsapp'])
 			},
 			error: function(error){
 			}
@@ -351,21 +381,27 @@
 		input_bahasa.val('ID')
 		input_deskripsi.summernote('code','')
 		input_tentang.summernote('code','')
+		input_toko_online1.val('')
+		input_toko_online2.val('')
+		input_whatsapp.val('')
 	});
 
 	$('#save_form').submit(function(event) {
 		event.preventDefault();
 		var formData = new FormData();
-		formData.append('nama', input_nama.val());
-		formData.append('deskripsi', input_deskripsi.val());
-		formData.append('tentang', input_tentang.val());
-		formData.append('jenis', input_jenis.val());
-		formData.append('bahasa', input_bahasa.val());
+		formData.append('nama', input_nama.val())
+		formData.append('deskripsi', input_deskripsi.val())
+		formData.append('tentang', input_tentang.val())
+		formData.append('jenis', input_jenis.val())
+		formData.append('bahasa', input_bahasa.val())
+		formData.append('toko_online1', input_toko_online1.val())
+		formData.append('toko_online2', input_toko_online2.val())
+		formData.append('whatsapp', input_whatsapp.val())
 		dropzone.files.forEach((item)=>{
-			formData.append('file[]', item);
+			formData.append('file[]', item)
 		})
 		if (input_id.val()){
-			formData.append('id', input_id.val());
+			formData.append('id', input_id.val())
 		}
 		$.ajax({
 			url: '<?= base_url('api/'.$module.'/save') ?>',
@@ -439,6 +475,8 @@
 			{title: 'Nama Produk',data: 'nama'},
 			{title: 'Jenis',data: 'jenis'},
 			{title: 'Bahasa',data: 'bahasa'},
+			{title: 'Toko Online',data: 'toko_online1'},
+			{title: 'WhatsApp',data: 'whatsapp'},
 			{title: 'Aksi',data: 'id_produk'},
 			],
 			'columnDefs': [
@@ -451,6 +489,19 @@
 			},
 			{
 				'render': function (data, type, row) {
+					let toko = ''
+					if (row.toko_online1) { 
+						toko += row.toko_online1 
+					}
+					if (row.toko_online2) { 
+						toko += ' & ' +row.toko_online2 
+					}
+					return toko
+				},
+				'targets': 4
+			},
+			{
+				'render': function (data, type, row) {
 					return `
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
 					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#deskripsi_modal">Deskripsi</button>
@@ -460,7 +511,7 @@
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_produk})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
 					</div>`;
 				},
-				'targets': 4
+				'targets': 6
 			},
 			],
 		});
