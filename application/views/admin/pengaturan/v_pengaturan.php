@@ -8,11 +8,13 @@
 						<div class="card-header">
 							<h2 class="card-title">Pengaturan</h2>
 							<div class="float-right">
-								<button class="btn btn-warning btn-sm" onclick="refreshPengaturan()" id="refresh_btn">Refresh</button>
+								<button class="btn btn-warning btn-sm" onclick="refreshPengaturan(this)" id="refresh_btn">Refresh</button>
 								&nbsp;
 								<button class="btn btn-primary btn-sm" onclick="editPengaturan()" id="edit_btn">Edit</button>
 								&nbsp;
-								<button class="btn btn-success btn-sm" onclick="simpanPengaturan()" style="display: none" id="simpan_btn">Simpan</button>
+								<button class="btn" style="display: none" onclick="refreshPengaturan(this)" id="cancel_btn">Batal</button>
+								&nbsp;
+								<button class="btn btn-success btn-sm" style="display: none" id="simpan_btn">Simpan</button>
 							</div>
 						</div>
 						<!-- /.card-header -->
@@ -95,7 +97,7 @@
 										<div class="col-6">
 											<div class="form-group">
 												<label for="twitter_input">
-													Twitter
+													Tiktok
 												</label>
 												<textarea class="form-control" id="twitter_input" name="twitter_input" style="display: none;"></textarea>
 												<p id="twitter_text">Loading ...</p>

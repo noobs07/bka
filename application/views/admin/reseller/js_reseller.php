@@ -45,7 +45,7 @@
 					<button type="reset" class="btn" data-dismiss="modal">
 						Batal
 					</button>
-					<button type="submit" class="btn btn-success">
+					<button type="submit" class="btn btn-success" id="save_btn">
 						Simpan
 					</button>
 				</div>
@@ -76,7 +76,7 @@
 					<button type="reset" class="btn" data-dismiss="modal">
 						Batal
 					</button>
-					<button type="submit" class="btn btn-danger">
+					<button type="submit" class="btn btn-danger" id="delete_btn">
 						Yakin, hapus
 					</button>
 				</div>
@@ -86,13 +86,15 @@
 </div>
 
 <script type="text/javascript">
-	Dropzone.autoDiscover = false;
+	Dropzone.autoDiscover = false
 
-	let table = null;
-	const form_modal = $('#form_modal');
-	const delete_modal = $('#delete_modal');
-	const input_delete_id = $('#delete_id');
-	const input_id = $('#id');
+	let table = null
+	const save_btn = $('#save_btn')
+	const delete_btn = $('#delete_btn')
+	const form_modal = $('#form_modal')
+	const delete_modal = $('#delete_modal')
+	const input_delete_id = $('#delete_id')
+	const input_id = $('#id')
 
 	const input_nama = $('#nama')
 	const input_alamat = $('#alamat')
@@ -104,8 +106,6 @@
 			url: '<?= base_url('api/'.$module.'/one') ?>',
 			data: {id:id},
 			type: 'GET',
-			beforeSend: function (xhr, settings){
-			},
 			success: function(response){
 				input_id.val(response['id_reseller'])
 				input_nama.val(response['nama'])
@@ -115,7 +115,7 @@
 			},
 			error: function(error){
 			}
-		});
+		})
 	}
 
 	form_modal.on('hidden.bs.modal', function(e) {
@@ -124,17 +124,17 @@
 		input_alamat.val('')
 		input_telepon.val('')
 		input_nama_toko.val('')
-	});
+	})
 
 	$('#save_form').submit(function(event) {
-		event.preventDefault();
-		var formData = new FormData();
-		formData.append('nama', input_nama.val());
-		formData.append('alamat', input_alamat.val());
-		formData.append('telepon', input_telepon.val());
-		formData.append('nama_toko', input_nama_toko.val());
+		event.preventDefault()
+		var formData = new FormData()
+		formData.append('nama', input_nama.val())
+		formData.append('alamat', input_alamat.val())
+		formData.append('telepon', input_telepon.val())
+		formData.append('nama_toko', input_nama_toko.val())
 		if (input_id.val()){
-			formData.append('id', input_id.val());
+			formData.append('id', input_id.val())
 		}
 		$.ajax({
 			url: '<?= base_url('api/'.$module.'/save') ?>',
@@ -143,47 +143,65 @@
 			processData: false,
 			type: 'POST',
 			beforeSend: function (xhr, settings){
+				save_btn.prop('disabled', true)
+				save_btn.text('Menyimpan')
 			},
 			success: function(response){
+				save_btn.prop('disabled', false)
+				save_btn.text('Simpan')
+
 				toastr.success('Berhasil disimpan')
-				table.ajax.reload(null, false);
-				form_modal.modal('hide');
+				table.ajax.reload(null, false)
+				form_modal.modal('hide')
 			},
 			error: function(error){
+				save_btn.prop('disabled', false)
+				save_btn.text('Simpan')
+
 				toastr.error('Gagal disimpan')
 			}
-		});
-	});
+		})
+	})
 
 	function deleteRow(id){
-		input_delete_id.val(id);
+		input_delete_id.val(id)
 	}
 
 	$('#delete_form').submit(function(event) {
-		event.preventDefault();
+		event.preventDefault()
 		$.ajax({
 			url: '<?= base_url('api/'.$module.'/delete') ?>',
 			data: {
 				id: input_delete_id.val(),
 			},
 			type: 'POST',
+			beforeSend: function (xhr, settings){
+				delete_btn.prop('disabled', true)
+				delete_btn.text('Menghapus')
+			},
 			success: function(response){
+				delete_btn.prop('disabled', false)
+				delete_btn.text('Yakin, hapus')
+
 				toastr.success('Berhasil dihapus')
-				table.ajax.reload(null, false);
-				delete_modal.modal('hide');
+				table.ajax.reload(null, false)
+				delete_modal.modal('hide')
 			},
 			error: function(error){
+				delete_btn.prop('disabled', false)
+				delete_btn.text('Yakin, hapus')
+
 				toastr.error('Gagal dihapus')
 			}
-		});
-	});
+		})
+	})
 
 	delete_modal.on('hidden.bs.modal', function(e) {
-		input_delete_id.val('');
-	});
+		input_delete_id.val('')
+	})
 
 	function refreshTable() {
-		table.ajax.reload(null, false);
+		table.ajax.reload(null, false)
 	}
 
 	$(document).ready( function () {
@@ -207,17 +225,17 @@
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
 					<button class="btn btn-warning" onclick="editRow(${row.id_reseller})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_reseller})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
-					</div>`;
+					</div>`
 				},
 				'targets': 5
 			},
 			],
-		});
+		})
 
 		$('#refresh_btn').click(()=>{
-			table.ajax.reload(null, false);
-		});
+			table.ajax.reload(null, false)
+		})
 
-	});
+	})
 </script>
 

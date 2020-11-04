@@ -85,47 +85,9 @@
 						<a href="<?= base_url('admin/produk') ?>" class="small-box-footer">Lihat <i class="fas fa-arrow-circle-right"></i></a>
 					</div>
 				</div>
-				<div class="col-md-3 col-6">
-					<!-- small box -->
-					<div class="card">
-						<div class="card-header">
-							<h2 class="card-title">Link Toko &amp; WhatsApp</h2>
-						</div>
-						<!-- /.card-header -->
-						<div class="card-body">
-							<input type="hidden" class="form-control" name="id" required readonly value="<?= ($pengaturan) ? $pengaturan->id : '' ?>" />
-							<div class="form-group">
-								<label for="link_toko">
-									Link Toko
-								</label>
-								<input type="text" class="form-control" name="link_toko" required readonly value="<?= ($pengaturan) ? $pengaturan->link_toko : '' ?>" />
-							</div>
-							<div class="form-group">
-								<label for="whatsapp">
-									WhatsApp
-								</label>
-								<input type="text" class="form-control" name="whatsapp" required readonly value="<?= ($pengaturan) ? $pengaturan->whatsapp : '' ?>" />
-							</div>
-							<div class="form-group float-right">
-								<button type="reset" class="btn" id="cancel_btn" style="display: none">
-									Batal
-								</button>
-								<button type="submit" class="btn btn-primary" id="edit_btn">
-									Edit
-								</button>
-								<button type="submit" class="btn btn-success" id="save_btn" style="display: none">
-									Simpan
-								</button>
-							</div>
-						</div>
-						<!-- /.card-body -->
-					</div>
-				</div>
-				<!-- ./col -->
+				
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container-fluid -->
 	</section>
 
 

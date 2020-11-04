@@ -148,7 +148,7 @@
 					<button type="reset" class="btn" data-dismiss="modal">
 						Batal
 					</button>
-					<button type="submit" class="btn btn-danger">
+					<button type="submit" class="btn btn-danger" id="delete_btn">
 						Yakin, hapus
 					</button>
 				</div>
@@ -227,14 +227,15 @@
 </div>
 
 <script type="text/javascript">
-	Dropzone.autoDiscover = false;
+	Dropzone.autoDiscover = false
 
-	let table = null;
-	const save_btn = $('#save_btn');
-	const form_modal = $('#form_modal');
-	const delete_modal = $('#delete_modal');
-	const input_delete_id = $('#delete_id');
-	const input_id = $('#id');
+	let table = null
+	const save_btn = $('#save_btn')
+	const delete_btn = $('#delete_btn')
+	const form_modal = $('#form_modal')
+	const delete_modal = $('#delete_modal')
+	const input_delete_id = $('#delete_id')
+	const input_id = $('#id')
 
 	const input_nama = $('#nama')
 	const input_deskripsi = $('#deskripsi').summernote({
@@ -261,9 +262,9 @@
 	const input_toko_online2 = $('#toko_online2')
 	const input_whatsapp = $('#whatsapp')
 
-	const deskripsi_div = $('#deskripsi-div');
-	const photos_div = $('#photos-div');
-	const tentang_div = $('#tentang-div');
+	const deskripsi_div = $('#deskripsi-div')
+	const photos_div = $('#photos-div')
+	const tentang_div = $('#tentang-div')
 
 	const dropzone = new Dropzone('div#files', { 
 		autoProcessQueue: false,
@@ -272,9 +273,9 @@
 		acceptedFiles: 'image/*',
 		url: '#',
 		init: function() {
-			this.on('addedfile', function(file) { $('.dz-progress').remove() });
+			this.on('addedfile', function(file) { $('.dz-progress').remove() })
 		}
-	});
+	})
 
 	function deletePhoto(id,filename,el){
 		if (confirm('Anda yakin mau hapus foto ini?')){
@@ -285,7 +286,7 @@
 				success: function(response) {
 					$(el).remove()
 					toastr.success('Berhasil dihapus')
-					table.ajax.reload(null, false);
+					table.ajax.reload(null, false)
 				},
 				error: function(error){
 					toastr.error('Gagal dihapus')
@@ -299,8 +300,6 @@
 			url: '<?= base_url('api/'.$module.'/detail') ?>',
 			data: {id:id},
 			type: 'GET',
-			beforeSend: function (xhr, settings){
-			},
 			success: function(response){
 				deskripsi_div.empty()
 				photos_div.empty()
@@ -309,37 +308,37 @@
 				deskripsi_div.html(response['deskripsi'])
 				tentang_div.html(response['tentang'])
 				response['photos'].forEach(photo=>{
-					const div = document.createElement('div');
+					const div = document.createElement('div')
 					div.style.position = 'relative'
 					div.style.width = '100px'
 					div.style.height = '100px'
 					div.style.margin = '10px'
 					div.style.border = '1px solid #9ba4b4'
-					div.style.borderRadius = '4px';
+					div.style.borderRadius = '4px'
 
-					const img = document.createElement('img');
+					const img = document.createElement('img')
 					img.style.width = '100%'
 					img.style.height = '100%'
 					img.style.objectFit = 'contain'
 					img.src = photo['file'].replace(' ', '_').replace('%20', '_')
 					// img.onerror = imgError(img)
 					img.alt = photo['file'].replace(' ', '_').replace('%20', '_')
-					img.onerror = function() {imgError(this)};
+					img.onerror = function() {imgError(this)}
 					
-					const i = document.createElement('i');
+					const i = document.createElement('i')
 					i.className = 'fa fa-trash'
 					i.style.className = 'fa fa-trash'
 
-					i.style.cursor ='pointer';
-					i.style.position = 'absolute';
-					i.style.bottom = '0';
-					i.style.color = 'white';
-					i.style.background = '#ff4b5c';
-					i.style.right = '0';
-					i.style.padding = '10px';
-					i.style.textAlign = 'right';
-					i.style.borderTopLeftRadius = '4px';
-					i.onclick = function() {deletePhoto(photo['id_foto'],photo['filename'],div)};
+					i.style.cursor ='pointer'
+					i.style.position = 'absolute'
+					i.style.bottom = '0'
+					i.style.color = 'white'
+					i.style.background = '#ff4b5c'
+					i.style.right = '0'
+					i.style.padding = '10px'
+					i.style.textAlign = 'right'
+					i.style.borderTopLeftRadius = '4px'
+					i.onclick = function() {deletePhoto(photo['id_foto'],photo['filename'],div)}
 
 					div.appendChild(img)
 					div.appendChild(i)
@@ -348,7 +347,7 @@
 			},
 			error: function(error){
 			}
-		});
+		})
 	}
 
 	function editRow(id){
@@ -356,8 +355,6 @@
 			url: '<?= base_url('api/'.$module.'/one') ?>',
 			data: {id:id},
 			type: 'GET',
-			beforeSend: function (xhr, settings){
-			},
 			success: function(response){
 				input_id.val(response['id_produk'])
 				input_nama.val(response['nama'])
@@ -371,7 +368,7 @@
 			},
 			error: function(error){
 			}
-		});
+		})
 	}
 
 	form_modal.on('hidden.bs.modal', function(e) {
@@ -384,11 +381,11 @@
 		input_toko_online1.val('')
 		input_toko_online2.val('')
 		input_whatsapp.val('')
-	});
+	})
 
 	$('#save_form').submit(function(event) {
-		event.preventDefault();
-		var formData = new FormData();
+		event.preventDefault()
+		var formData = new FormData()
 		formData.append('nama', input_nama.val())
 		formData.append('deskripsi', input_deskripsi.val())
 		formData.append('tentang', input_tentang.val())
@@ -418,50 +415,61 @@
 				save_btn.text('Simpan')
 
 				dropzone.files.forEach((file)=>{
-					dropzone.removeFile(file);
+					dropzone.removeFile(file)
 				})
 				toastr.success('Berhasil disimpan')
-				table.ajax.reload(null, false);
-				form_modal.modal('hide');
+				table.ajax.reload(null, false)
+				form_modal.modal('hide')
 			},
 			error: function(error){
 				save_btn.prop('disabled', false)
 				save_btn.text('Simpan')
+
 				toastr.error('Gagal disimpan')
 			}
-		});
-	});
+		})
+	})
 
 	function deleteRow(id){
-		input_delete_id.val(id);
+		input_delete_id.val(id)
 	}
 
 	$('#delete_form').submit(function(event) {
-		event.preventDefault();
+		event.preventDefault()
 		$.ajax({
 			url: '<?= base_url('api/'.$module.'/delete') ?>',
 			data: {
 				id: input_delete_id.val(),
 			},
 			type: 'POST',
+			beforeSend: function (xhr, settings){
+				delete_btn.prop('disabled', true)
+				delete_btn.text('Menghapus')
+			},
 			success: function(response){
+				delete_btn.prop('disabled', false)
+				delete_btn.text('Yakin, hapus')
+
 				toastr.success('Berhasil dihapus')
-				table.ajax.reload(null, false);
-				delete_modal.modal('hide');
+				table.ajax.reload(null, false)
+				delete_modal.modal('hide')
 			},
 			error: function(error){
+				delete_btn.prop('disabled', false)
+				delete_btn.text('Yakin, hapus')
+
 				toastr.error('Gagal dihapus')
 			}
-		});
-	});
+		})
+	})
 
 	delete_modal.on('hidden.bs.modal', function(e) {
-		input_delete_id.val('');
-	});
+		input_delete_id.val('')
+	})
 
 	function refreshTable() {
 		console.log(dropzone.files)
-		table.ajax.reload(null, false);
+		table.ajax.reload(null, false)
 	}
 
 	$(document).ready( function () {
@@ -507,19 +515,21 @@
 					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#deskripsi_modal">Deskripsi</button>
 					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#photos_modal">Foto</button>
 					<button class="btn btn-primary" onclick="getDetail(${row.id_produk})" data-toggle="modal" data-target="#tentang_modal">Tentang</button>
+					</div>
+					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
 					<button class="btn btn-warning" onclick="editRow(${row.id_produk})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_produk})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
-					</div>`;
+					</div>`
 				},
 				'targets': 6
 			},
 			],
-		});
+		})
 
 		$('#refresh_btn').click(()=>{
-			table.ajax.reload(null, false);
-		});
+			table.ajax.reload(null, false)
+		})
 
-	});
+	})
 </script>
 

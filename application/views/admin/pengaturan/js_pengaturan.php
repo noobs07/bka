@@ -1,6 +1,7 @@
 <script type="text/javascript">
 	const refresh_btn = $('#refresh_btn')
 	const edit_btn = $('#edit_btn')
+	const cancel_btn = $('#cancel_btn')
 	const simpan_btn = $('#simpan_btn')
 
 	const input_id = $('#id')
@@ -45,123 +46,10 @@
 	let desc_vermont = $('#desc_vermont')
 	let desc_vermont_text = $('#desc_vermont_text')
 
-	simpan_btn.click((e)=>{
-		var formData = new FormData();
-		formData.append('profil', profil.val());
-		formData.append('promo', promo.val());
-		formData.append('link_promo', link_promo.val());
-		formData.append('alamat', alamat.val());
-		formData.append('twitter', twitter.val());
-		formData.append('facebook', facebook.val());
-		formData.append('instagram', instagram.val());
-		formData.append('reseller_rule', reseller_rule.val());
-		formData.append('title_videos', title_videos.val());
-		formData.append('desc_videos', desc_videos.val());
-		formData.append('title_bigroot', title_bigroot.val());
-		formData.append('desc_bigroot', desc_bigroot.val());
-		formData.append('title_vermont', title_vermont.val());
-		formData.append('desc_vermont', desc_vermont.val());
-		formData.append('file', input_image_promo[0].files[0]);
-		if (input_id.val()){
-			formData.append('id', input_id.val());
-		}
-		$.ajax({
-			url: '<?= base_url('api/'.$module) ?>',
-			data: formData,
-			contentType: false,
-			processData: false,
-			type: 'POST',
-			beforeSend: function (xhr, settings){
-				simpan_btn.text('Loading ...')
-			},
-			success: function(response){ 
-				simpan_btn.text('Simpan')
-				if (response){
-					profil_text.html(response['profil'])
-					promo_text.html(response['promo'])
-					link_promo_text.html(response['link_promo'])
-					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
-					alamat_text.html(response['alamat'])
-					twitter_text.html(response['twitter'])
-					facebook_text.html(response['facebook'])
-					instagram_text.html(response['instagram'])
-					reseller_rule_text.html(response['reseller_rule'])
-					videos_text.html(response['title_videos'])
-					desc_videos_text.html(response['desc_videos'])
-					bigroot_text.html(response['title_bigroot'])
-					desc_bigroot_text.html(response['desc_bigroot'])
-					vermont_text.html(response['title_vermont'])
-					desc_vermont_text.html(response['desc_vermont'])
-				}
-			},
-			error: function(error){
-				simpan_btn.text('Simpan')
-			}
-		})
-	})
-
-	function refreshPengaturan() {
-		$.ajax({
-			url: '<?= base_url('api/'.$module) ?>',
-			type: 'GET',
-			beforeSend: function (xhr, settings){
-				profil_text.html('Loading ...')
-				promo_text.html('Loading ...')
-				link_promo_text.html('Loading ...')
-				alamat_text.html('Loading ...')
-				twitter_text.html('Loading ...')
-				facebook_text.html('Loading ...')
-				instagram_text.html('Loading ...')
-				reseller_rule_text.html('Loading ...')
-				videos_text.html('Loading ...')
-				desc_videos_text.html('Loading ...')
-				bigroot_text.html('Loading ...')
-				desc_bigroot_text.html('Loading ...')
-				vermont_text.html('Loading ...')
-				desc_vermont_text.html('Loading ...')
-			},
-			success: function(response){ 
-				if (response){
-					input_id.val(response['id'])
-					profil_text.html(response['profil'])
-					promo_text.html(response['promo'])
-					link_promo_text.html(response['link_promo'])
-					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
-					alamat_text.html(response['alamat'])
-					twitter_text.html(response['twitter'])
-					facebook_text.html(response['facebook'])
-					instagram_text.html(response['instagram'])
-					reseller_rule_text.html(response['reseller_rule'])
-					videos_text.html(response['title_videos'])
-					desc_videos_text.html(response['desc_videos'])
-					bigroot_text.html(response['title_bigroot'])
-					desc_bigroot_text.html(response['desc_bigroot'])
-					vermont_text.html(response['title_vermont'])
-					desc_vermont_text.html(response['desc_vermont'])
-				}
-			},
-			error: function(error){
-				profil_text.html('Coba lagi')
-				promo_text.html('Coba lagi')
-				link_promo_text.html('Coba lagi')
-				alamat_text.html('Coba lagi')
-				twitter_text.html('Coba lagi')
-				facebook_text.html('Coba lagi')
-				instagram_text.html('Coba lagi')
-				reseller_rule_text.html('Coba lagi')
-				videos_text.html('Coba lagi')
-				desc_videos_text.html('Coba lagi')
-				bigroot_text.html('Coba lagi')
-				desc_bigroot_text.html('Coba lagi')
-				vermont_text.html('Coba lagi')
-				desc_vermont_text.html('Coba lagi')
-			}
-		})
-	}
-
-	function editPengaturan() {
+	function editState(){
 		refresh_btn.hide()
 		edit_btn.hide()
+		cancel_btn.show()
 		simpan_btn.show()
 
 		gambar.show()
@@ -232,67 +120,12 @@
 		desc_vermont.show()
 		desc_vermont_text.hide()
 
-
-		$.ajax({
-			url: '<?= base_url('api/'.$module) ?>',
-			type: 'GET',
-			beforeSend: function (xhr, settings){
-				profil_text.html('Loading ...')
-				promo_text.html('Loading ...')
-				link_promo_text.html('Loading ...')
-				alamat_text.html('Loading ...')
-				twitter_text.html('Loading ...')
-				facebook_text.html('Loading ...')
-				instagram_text.html('Loading ...')
-				reseller_rule_text.html('Loading ...')
-				videos_text.html('Loading ...')
-				desc_videos_text.html('Loading ...')
-				bigroot_text.html('Loading ...')
-				desc_bigroot_text.html('Loading ...')
-				vermont_text.html('Loading ...')
-				desc_vermont_text.html('Loading ...')
-			},
-			success: function(response){
-				if (response) {
-					input_id.val(response['id'])
-					profil.summernote('code',response['profil'])
-					promo.summernote('code',response['promo'])
-					link_promo.val(response['link_promo'])
-					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
-					alamat.summernote('code',response['alamat'])
-					twitter.val(response['twitter'])
-					facebook.val(response['facebook'])
-					instagram.val(response['instagram'])
-					reseller_rule.summernote('code',response['reseller_rule'])
-					title_videos.val(response['title_videos'])
-					desc_videos.val(response['desc_videos'])
-					title_bigroot.val(response['title_bigroot'])
-					desc_bigroot.val(response['desc_bigroot'])
-					title_vermont.val(response['title_vermont'])
-					desc_vermont.val(response['desc_vermont'])
-				}
-			},
-			error: function(error){
-				profil_text.html('Coba lagi')
-				promo_text.html('Coba lagi')
-				alamat_text.html('Coba lagi')
-				twitter_text.html('Coba lagi')
-				facebook_text.html('Coba lagi')
-				instagram_text.html('Coba lagi')
-				reseller_rule_text.html('Coba lagi')
-				videos_text.html('Coba lagi')
-				desc_videos_text.html('Coba lagi')
-				bigroot_text.html('Coba lagi')
-				desc_bigroot_text.html('Coba lagi')
-				vermont_text.html('Coba lagi')
-				desc_vermont_text.html('Coba lagi')
-			}
-		})
 	}
 
-	function simpanPengaturan() {
+	function viewState() {
 		refresh_btn.show()
 		edit_btn.show()
+		cancel_btn.hide()
 		simpan_btn.hide()
 
 		gambar.hide()
@@ -335,6 +168,202 @@
 		desc_vermont.hide()
 		desc_vermont_text.show()
 	}
+
+	simpan_btn.click((e)=>{
+		var formData = new FormData();
+		formData.append('profil', profil.val());
+		formData.append('promo', promo.val());
+		formData.append('link_promo', link_promo.val());
+		formData.append('alamat', alamat.val());
+		formData.append('twitter', twitter.val());
+		formData.append('facebook', facebook.val());
+		formData.append('instagram', instagram.val());
+		formData.append('reseller_rule', reseller_rule.val());
+		formData.append('title_videos', title_videos.val());
+		formData.append('desc_videos', desc_videos.val());
+		formData.append('title_bigroot', title_bigroot.val());
+		formData.append('desc_bigroot', desc_bigroot.val());
+		formData.append('title_vermont', title_vermont.val());
+		formData.append('desc_vermont', desc_vermont.val());
+		formData.append('file', input_image_promo[0].files[0]);
+		if (input_id.val()){
+			formData.append('id', input_id.val());
+		}
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			data: formData,
+			contentType: false,
+			processData: false,
+			type: 'POST',
+			beforeSend: function (xhr, settings){
+				simpan_btn.prop('disabled', true)
+				simpan_btn.text('Menyimpan ...')
+			},
+			success: function(response){ 
+				viewState()
+				if (response){
+					profil_text.html(response['profil'])
+					promo_text.html(response['promo'])
+					link_promo_text.html(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
+					alamat_text.html(response['alamat'])
+					twitter_text.html(response['twitter'])
+					facebook_text.html(response['facebook'])
+					instagram_text.html(response['instagram'])
+					reseller_rule_text.html(response['reseller_rule'])
+					videos_text.html(response['title_videos'])
+					desc_videos_text.html(response['desc_videos'])
+					bigroot_text.html(response['title_bigroot'])
+					desc_bigroot_text.html(response['desc_bigroot'])
+					vermont_text.html(response['title_vermont'])
+					desc_vermont_text.html(response['desc_vermont'])
+				}
+				simpan_btn.prop('disabled', false)
+				simpan_btn.text('Simpan')
+			},
+			error: function(error){
+				simpan_btn.prop('disabled', false)
+				simpan_btn.text('Simpan')
+			}
+		})
+	})
+
+	function refreshPengaturan(e) {
+		const btn = $(e)
+		const txt = btn.text()
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+				btn.prop('disabled', true)
+				btn.text('Tunggu ...')
+
+				profil_text.html('Loading ...')
+				promo_text.html('Loading ...')
+				link_promo_text.html('Loading ...')
+				alamat_text.html('Loading ...')
+				twitter_text.html('Loading ...')
+				facebook_text.html('Loading ...')
+				instagram_text.html('Loading ...')
+				reseller_rule_text.html('Loading ...')
+				videos_text.html('Loading ...')
+				desc_videos_text.html('Loading ...')
+				bigroot_text.html('Loading ...')
+				desc_bigroot_text.html('Loading ...')
+				vermont_text.html('Loading ...')
+				desc_vermont_text.html('Loading ...')
+			},
+			success: function(response){ 
+				viewState()
+				if (response){
+					input_id.val(response['id'])
+					profil_text.html(response['profil'])
+					promo_text.html(response['promo'])
+					link_promo_text.html(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
+					alamat_text.html(response['alamat'])
+					twitter_text.html(response['twitter'])
+					facebook_text.html(response['facebook'])
+					instagram_text.html(response['instagram'])
+					reseller_rule_text.html(response['reseller_rule'])
+					videos_text.html(response['title_videos'])
+					desc_videos_text.html(response['desc_videos'])
+					bigroot_text.html(response['title_bigroot'])
+					desc_bigroot_text.html(response['desc_bigroot'])
+					vermont_text.html(response['title_vermont'])
+					desc_vermont_text.html(response['desc_vermont'])
+				}
+				btn.prop('disabled', false)
+				btn.text(txt)
+			},
+			error: function(error){
+				profil_text.html('Coba lagi')
+				promo_text.html('Coba lagi')
+				link_promo_text.html('Coba lagi')
+				alamat_text.html('Coba lagi')
+				twitter_text.html('Coba lagi')
+				facebook_text.html('Coba lagi')
+				instagram_text.html('Coba lagi')
+				reseller_rule_text.html('Coba lagi')
+				videos_text.html('Coba lagi')
+				desc_videos_text.html('Coba lagi')
+				bigroot_text.html('Coba lagi')
+				desc_bigroot_text.html('Coba lagi')
+				vermont_text.html('Coba lagi')
+				desc_vermont_text.html('Coba lagi')
+				btn.prop('disabled', false)
+				btn.text(txt)
+			}
+		})
+	}
+
+	function editPengaturan() {
+		$.ajax({
+			url: '<?= base_url('api/'.$module) ?>',
+			type: 'GET',
+			beforeSend: function (xhr, settings){
+				edit_btn.prop('disabled', true)
+				edit_btn.text('Menyiapkan ...')
+
+				profil_text.html('Loading ...')
+				promo_text.html('Loading ...')
+				link_promo_text.html('Loading ...')
+				alamat_text.html('Loading ...')
+				twitter_text.html('Loading ...')
+				facebook_text.html('Loading ...')
+				instagram_text.html('Loading ...')
+				reseller_rule_text.html('Loading ...')
+				videos_text.html('Loading ...')
+				desc_videos_text.html('Loading ...')
+				bigroot_text.html('Loading ...')
+				desc_bigroot_text.html('Loading ...')
+				vermont_text.html('Loading ...')
+				desc_vermont_text.html('Loading ...')
+			},
+			success: function(response){
+				editState()
+				if (response) {
+					input_id.val(response['id'])
+					profil.summernote('code',response['profil'])
+					promo.summernote('code',response['promo'])
+					link_promo.val(response['link_promo'])
+					cover_promo.attr('src','<?= base_url('assets/uploads/') ?>'+response['image_promo'])
+					alamat.summernote('code',response['alamat'])
+					twitter.val(response['twitter'])
+					facebook.val(response['facebook'])
+					instagram.val(response['instagram'])
+					reseller_rule.summernote('code',response['reseller_rule'])
+					title_videos.val(response['title_videos'])
+					desc_videos.val(response['desc_videos'])
+					title_bigroot.val(response['title_bigroot'])
+					desc_bigroot.val(response['desc_bigroot'])
+					title_vermont.val(response['title_vermont'])
+					desc_vermont.val(response['desc_vermont'])
+				}
+				edit_btn.prop('disabled', false)
+				edit_btn.text('Edit')
+			},
+			error: function(error){
+				profil_text.html('Coba lagi')
+				promo_text.html('Coba lagi')
+				alamat_text.html('Coba lagi')
+				twitter_text.html('Coba lagi')
+				facebook_text.html('Coba lagi')
+				instagram_text.html('Coba lagi')
+				reseller_rule_text.html('Coba lagi')
+				videos_text.html('Coba lagi')
+				desc_videos_text.html('Coba lagi')
+				bigroot_text.html('Coba lagi')
+				desc_bigroot_text.html('Coba lagi')
+				vermont_text.html('Coba lagi')
+				desc_vermont_text.html('Coba lagi')
+				edit_btn.prop('disabled', false)
+				edit_btn.text('Edit')
+			}
+		})
+	}
+
+
 
 
 	$(document).ready( function () {

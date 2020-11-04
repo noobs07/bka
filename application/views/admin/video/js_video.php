@@ -39,7 +39,7 @@
 					<button type="reset" class="btn" data-dismiss="modal">
 						Batal
 					</button>
-					<button type="submit" class="btn btn-success">
+					<button type="submit" class="btn btn-success" id="save_btn">
 						Simpan
 					</button>
 				</div>
@@ -70,7 +70,7 @@
 					<button type="reset" class="btn" data-dismiss="modal">
 						Batal
 					</button>
-					<button type="submit" class="btn btn-danger">
+					<button type="submit" class="btn btn-danger" id="delete_btn">
 						Yakin, hapus
 					</button>
 				</div>
@@ -80,13 +80,15 @@
 </div>
 
 <script type="text/javascript">
-	Dropzone.autoDiscover = false;
+	Dropzone.autoDiscover = false
 
-	let table = null;
-	const form_modal = $('#form_modal');
-	const delete_modal = $('#delete_modal');
-	const input_delete_id = $('#delete_id');
-	const input_id = $('#id');
+	let table = null
+	const save_btn = $('#save_btn')
+	const delete_btn = $('#delete_btn')
+	const form_modal = $('#form_modal')
+	const delete_modal = $('#delete_modal')
+	const input_delete_id = $('#delete_id')
+	const input_id = $('#id')
 
 	const input_judul = $('#judul')
 	const input_link = $('#link')
@@ -97,8 +99,6 @@
 			url: '<?= base_url('api/'.$module.'/one') ?>',
 			data: {id:id},
 			type: 'GET',
-			beforeSend: function (xhr, settings){
-			},
 			success: function(response){
 				input_id.val(response['id_video'])
 				input_judul.val(response['judul'])
@@ -107,7 +107,7 @@
 			},
 			error: function(error){
 			}
-		});
+		})
 	}
 
 	form_modal.on('hidden.bs.modal', function(e) {
@@ -115,16 +115,16 @@
 		input_judul.val('')
 		input_file.val('')
 		input_link.val('')
-	});
+	})
 
 	$('#save_form').submit(function(event) {
-		event.preventDefault();
-		var formData = new FormData();
-		formData.append('judul', input_judul.val());
-		formData.append('file', input_file[0].files[0]);
-		formData.append('link', input_link.val());
+		event.preventDefault()
+		var formData = new FormData()
+		formData.append('judul', input_judul.val())
+		formData.append('file', input_file[0].files[0])
+		formData.append('link', input_link.val())
 		if (input_id.val()){
-			formData.append('id', input_id.val());
+			formData.append('id', input_id.val())
 		}
 		$.ajax({
 			url: '<?= base_url('api/'.$module.'/save') ?>',
@@ -133,71 +133,89 @@
 			processData: false,
 			type: 'POST',
 			beforeSend: function (xhr, settings){
+				save_btn.prop('disabled', true)
+				save_btn.text('Menyimpan')
 			},
 			success: function(response){
+				save_btn.prop('disabled', false)
+				save_btn.text('Simpan')
+
 				toastr.success('Berhasil disimpan')
-				table.ajax.reload(null, false);
-				form_modal.modal('hide');
+				table.ajax.reload(null, false)
+				form_modal.modal('hide')
 			},
 			error: function(error){
+				save_btn.prop('disabled', false)
+				save_btn.text('Simpan')
+
 				toastr.error('Gagal disimpan')
 			}
-		});
-	});
+		})
+	})
 
 	function deleteRow(id){
-		input_delete_id.val(id);
+		input_delete_id.val(id)
 	}
 
 	$('#delete_form').submit(function(event) {
-		event.preventDefault();
+		event.preventDefault()
 		$.ajax({
 			url: '<?= base_url('api/'.$module.'/delete') ?>',
 			data: {
 				id: input_delete_id.val(),
 			},
 			type: 'POST',
+			beforeSend: function (xhr, settings){
+				delete_btn.prop('disabled', true)
+				delete_btn.text('Menghapus')
+			},
 			success: function(response){
+				delete_btn.prop('disabled', false)
+				delete_btn.text('Yakin, hapus')
+
 				toastr.success('Berhasil dihapus')
-				table.ajax.reload(null, false);
-				delete_modal.modal('hide');
+				table.ajax.reload(null, false)
+				delete_modal.modal('hide')
 			},
 			error: function(error){
+				delete_btn.prop('disabled', false)
+				delete_btn.text('Yakin, hapus')
+
 				toastr.error('Gagal dihapus')
 			}
-		});
-	});
+		})
+	})
 
 	delete_modal.on('hidden.bs.modal', function(e) {
-		input_delete_id.val('');
-	});
+		input_delete_id.val('')
+	})
 
 	function refreshTable() {
-		table.ajax.reload(null, false);
+		table.ajax.reload(null, false)
 	}
 
 	toggleActive = (e,id) => {
-		const btn = $(e);
-		const icon = btn.find('i');
-		const is_shown = ((btn.data('is_shown') == '0') ? '1' : '0');
+		const btn = $(e)
+		const icon = btn.find('i')
+		const is_shown = ((btn.data('is_shown') == '0') ? '1' : '0')
 		$.ajax({
 			type: 'POST',
 			url: "<?php echo base_url('api/'.$module.'/toggle/') ?>",
 			data: {id: id, is_shown: is_shown},
 			success: (response)=>{
 				if (response) {
-					btn.data('is_shown', is_shown);
+					btn.data('is_shown', is_shown)
 					if (is_shown=='1') {
-						btn.removeClass('btn-secondary');
-						btn.addClass('btn-success');
-						icon.removeClass('fa-toggle-off');
-						icon.addClass('fa-toggle-on');
+						btn.removeClass('btn-secondary')
+						btn.addClass('btn-success')
+						icon.removeClass('fa-toggle-off')
+						icon.addClass('fa-toggle-on')
 						toastr.success('Ditampilkan')
 					} else {
-						btn.removeClass('btn-success');
-						btn.addClass('btn-secondary');
-						icon.removeClass('fa-toggle-on');
-						icon.addClass('fa-toggle-off');
+						btn.removeClass('btn-success')
+						btn.addClass('btn-secondary')
+						icon.removeClass('fa-toggle-on')
+						icon.addClass('fa-toggle-off')
 						toastr.success('Disembunyikan')
 					}
 				}
@@ -208,7 +226,7 @@
 			fail: (reason)=>{
 			},
 			dataType: 'json'
-		});
+		})
 	}
 
 	$(document).ready( function () {
@@ -227,7 +245,7 @@
 			'columnDefs': [
 			{
 				'render': function (data, type, row) {
-					return `<img onerror="imgError(this)" src='${row.cover}' style='width:100px' />`;
+					return `<img onerror="imgError(this)" src='${row.cover}' style='width:100px' />`
 				},
 				'targets': 2
 			},
@@ -236,30 +254,30 @@
 					let shownBtn = 
 					`<button type="button" class="m-btn btn btn-success" data-is_shown=${row.is_shown} onclick="toggleActive(this,${row.id_video})">
 					<i class="fa fa-toggle-on"></i>
-					</button>`;
+					</button>`
 
 					if (row.is_shown=='0') {
 						shownBtn = 
 						`<button type="button" class="m-btn btn btn-secondary" data-is_shown=${row.is_shown} onclick="toggleActive(this,${row.id_video})">
 						<i class="fa fa-toggle-off"></i>
-						</button>`;
+						</button>`
 					}
 					return `
 					<div class="btn-group btn-group-sm" role="group" aria-label="First group">
 					${shownBtn}
 					<button class="btn btn-warning" onclick="editRow(${row.id_video})" data-toggle="modal" data-target="#form_modal"><i class="fa fa-edit"></i></button>
 					<button class="btn btn-danger" onclick="deleteRow(${row.id_video})" data-toggle="modal" data-target="#delete_modal"><i class="fa fa-trash"></i></button>
-					</div>`;
+					</div>`
 				},
 				'targets': 4
 			},
 			],
-		});
+		})
 
 		$('#refresh_btn').click(()=>{
-			table.ajax.reload(null, false);
-		});
+			table.ajax.reload(null, false)
+		})
 
-	});
+	})
 </script>
 

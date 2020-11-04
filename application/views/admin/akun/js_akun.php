@@ -1,9 +1,9 @@
 <script type="text/javascript">
+	const save_btn = $('#save_btn')
 	const change_form = $('#change_form')
 	const input_old_password = $('#old_password')
 	const input_new_password = $('#new_password')
 	const input_confirm_password = $('#confirm_password')
-	// const error_div = $('#error_div')
 
 	$(document).ready( function () {
 		change_form.submit(function(event) {
@@ -20,6 +20,8 @@
 				},
 				type: 'POST',
 				beforeSend: function (xhr, settings){
+					save_btn.prop('disabled', true)
+					save_btn.text('Menyimpan')
 				},
 				success: function(response) {
 					if (response['status']) {
@@ -30,11 +32,15 @@
 					} else {
 						toastr.error(response['message'])
 					}
+
+					save_btn.prop('disabled', false)
+					save_btn.text('Simpan')
 				},
 				error: function(error, a,b){
+					save_btn.prop('disabled', false)
+					save_btn.text('Simpan')
+
 					toastr.error(error.status + ' ' + error.statusText)
-					// error_div.show()	
-					// error_div.find("span").text(error.status + ' ' + error.statusText)
 				}
 			})
 		})

@@ -34,7 +34,7 @@ class Akun extends REST_Controller {
 		} else {
 			$this->response((object)array(
 				'status' => false,
-				'message' => 'Password gagal diubah',
+				'message' => 'Gagal diubah, password lama tidak cocok',
 				'a' => $this->session->userdata('bka_user')['username'],
 			), 200);
 		}
