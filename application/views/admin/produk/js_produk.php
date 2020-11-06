@@ -327,7 +327,6 @@
 					
 					const i = document.createElement('i')
 					i.className = 'fa fa-trash'
-					i.style.className = 'fa fa-trash'
 
 					i.style.cursor ='pointer'
 					i.style.position = 'absolute'
