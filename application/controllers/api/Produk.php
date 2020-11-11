@@ -30,6 +30,8 @@ class Produk extends REST_Controller {
 			$this->db->or_like('bahasa', $keyword['value']);
 			$this->db->or_like('toko_online1', $keyword['value']);
 			$this->db->or_like('toko_online2', $keyword['value']);
+			$this->db->or_like('toko_online3', $keyword['value']);
+			$this->db->or_like('toko_online4', $keyword['value']);
 			$this->db->or_like('whatsapp', $keyword['value']);
 			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
 				$this->db->or_like('jenis', '1');
@@ -40,7 +42,7 @@ class Produk extends REST_Controller {
 		}
 
 		$columns = array('id_produk','nama','jenis','bahasa','toko_online1','whatsapp');
-		$this->db->select('id_produk,nama,deskripsi,tentang,bahasa,jenis,toko_online1,toko_online2,whatsapp');
+		$this->db->select('*');
 		if(isset($keyword) && $keyword['value'] != '') {
 			$this->db->or_like('nama', $keyword['value']);
 			$this->db->or_like('deskripsi', $keyword['value']);
@@ -48,6 +50,8 @@ class Produk extends REST_Controller {
 			$this->db->or_like('bahasa', $keyword['value']);
 			$this->db->or_like('toko_online1', $keyword['value']);
 			$this->db->or_like('toko_online2', $keyword['value']);
+			$this->db->or_like('toko_online3', $keyword['value']);
+			$this->db->or_like('toko_online4', $keyword['value']);
 			$this->db->or_like('whatsapp', $keyword['value']);
 			if (strpos('bigroot', strtolower($keyword['value']))!==false) {
 				$this->db->or_like('jenis', '1');
@@ -113,6 +117,8 @@ class Produk extends REST_Controller {
 		$data['bahasa'] 	= $this->input->post('bahasa');
 		$toko_online1 		= $this->input->post('toko_online1');
 		$toko_online2 		= $this->input->post('toko_online2');
+		$toko_online3 		= $this->input->post('toko_online3');
+		$toko_online4 		= $this->input->post('toko_online4');
 		$whatsapp 			= $this->input->post('whatsapp');
 
 		if ($toko_online1) {
@@ -121,6 +127,14 @@ class Produk extends REST_Controller {
 
 		if ($toko_online2) {
 			$data['toko_online2']	= $toko_online2;
+		}
+
+		if ($toko_online3) {
+			$data['toko_online3']	= $toko_online3;
+		}
+
+		if ($toko_online4) {
+			$data['toko_online4']	= $toko_online4;
 		}
 
 		if ($whatsapp) {

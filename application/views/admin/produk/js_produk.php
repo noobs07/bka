@@ -28,7 +28,7 @@
 					<div class="tab-content" id="custom-content-below-tabContent">
 						<div class="tab-pane fade show active" id="information" role="tabpanel" aria-labelledby="information-tab">
 							<div class="row">
-								<div class="col-md-4 col-sm-12">
+								<div class="col-md-3 col-sm-12">
 									<div class="form-group">
 										<label for="nama">
 											Nama Produk
@@ -36,7 +36,7 @@
 										<input type="text" class="form-control" id="nama" name="nama" required />
 									</div>
 								</div>
-								<div class="col-md-4 col-sm-12">
+								<div class="col-md-3 col-sm-12">
 									<div class="form-group">
 										<label for="jenis">
 											Jenis
@@ -47,7 +47,7 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4 col-sm-12">
+								<div class="col-md-3 col-sm-12">
 									<div class="form-group">
 										<label for="bahasa">
 											Bahasa
@@ -58,7 +58,15 @@
 										</select>
 									</div>
 								</div>
-								<div class="col-md-4 col-sm-12">
+								<div class="col-md-3 col-sm-12">
+									<div class="form-group">
+										<label for="whatsapp">
+											WhatsApp
+										</label>
+										<input type="text" class="form-control" id="whatsapp" name="whatsapp" />
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12">
 									<div class="form-group">
 										<label for="toko_online1">
 											Toko Online 1
@@ -66,7 +74,7 @@
 										<input type="text" class="form-control" id="toko_online1" name="toko_online1" />
 									</div>
 								</div>
-								<div class="col-md-4 col-sm-12">
+								<div class="col-md-3 col-sm-12">
 									<div class="form-group">
 										<label for="toko_online2">
 											Toko Online 2
@@ -74,12 +82,20 @@
 										<input type="text" class="form-control" id="toko_online2" name="toko_online2" />
 									</div>
 								</div>
-								<div class="col-md-4 col-sm-12">
+								<div class="col-md-3 col-sm-12">
 									<div class="form-group">
-										<label for="whatsapp">
-											WhatsApp
+										<label for="toko_online3">
+											Toko Online 3
 										</label>
-										<input type="text" class="form-control" id="whatsapp" name="whatsapp" />
+										<input type="text" class="form-control" id="toko_online3" name="toko_online3" />
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-12">
+									<div class="form-group">
+										<label for="toko_online4">
+											Toko Online 4
+										</label>
+										<input type="text" class="form-control" id="toko_online4" name="toko_online4" />
 									</div>
 								</div>
 								<div class="col-12">
@@ -260,6 +276,8 @@
 	const input_bahasa = $('#bahasa')
 	const input_toko_online1 = $('#toko_online1')
 	const input_toko_online2 = $('#toko_online2')
+	const input_toko_online3 = $('#toko_online3')
+	const input_toko_online4 = $('#toko_online4')
 	const input_whatsapp = $('#whatsapp')
 
 	const deskripsi_div = $('#deskripsi-div')
@@ -363,6 +381,8 @@
 				input_bahasa.val(response['bahasa'])
 				input_toko_online1.val(response['toko_online1'])
 				input_toko_online2.val(response['toko_online2'])
+				input_toko_online3.val(response['toko_online3'])
+				input_toko_online4.val(response['toko_online4'])
 				input_whatsapp.val(response['whatsapp'])
 			},
 			error: function(error){
@@ -379,6 +399,8 @@
 		input_tentang.summernote('code','')
 		input_toko_online1.val('')
 		input_toko_online2.val('')
+		input_toko_online3.val('')
+		input_toko_online4.val('')
 		input_whatsapp.val('')
 	})
 
@@ -392,6 +414,8 @@
 		formData.append('bahasa', input_bahasa.val())
 		formData.append('toko_online1', input_toko_online1.val())
 		formData.append('toko_online2', input_toko_online2.val())
+		formData.append('toko_online3', input_toko_online3.val())
+		formData.append('toko_online4', input_toko_online4.val())
 		formData.append('whatsapp', input_whatsapp.val())
 		dropzone.files.forEach((item)=>{
 			formData.append('file[]', item)
@@ -501,7 +525,13 @@
 						toko += row.toko_online1 
 					}
 					if (row.toko_online2) { 
-						toko += ' & ' +row.toko_online2 
+						toko += '<br>' +row.toko_online2 
+					}
+					if (row.toko_online3) { 
+						toko += '<br>' +row.toko_online3 
+					}
+					if (row.toko_online4) { 
+						toko += '<br>' +row.toko_online4 
 					}
 					return toko
 				},
