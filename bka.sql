@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2020 at 02:02 AM
+-- Generation Time: Nov 11, 2020 at 02:12 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -133,8 +133,8 @@ CREATE TABLE `produk` (
   `jenis` tinyint(1) NOT NULL COMMENT '1 bigroot, 2 vermont',
   `toko_online1` varchar(255) DEFAULT NULL,
   `toko_online2` varchar(255) DEFAULT NULL,
-  `toko_online3` varchar(255) NOT NULL,
-  `toko_online4` varchar(255) NOT NULL,
+  `toko_online3` varchar(255) DEFAULT NULL,
+  `toko_online4` varchar(255) DEFAULT NULL,
   `whatsapp` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
